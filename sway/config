@@ -1,0 +1,19 @@
+# ~/.config/sway/config
+
+# Variables
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term alacritty
+set $menu fuzzel
+
+# Display Output
+output * bg /home/pavan/Pictures/Maahishmathi.jpg fill 
+
+# System Default Includes
+include /etc/sway/config.d/*
+
+# Modular User Includes
+include ~/.config/sway/config.d/*.conf
