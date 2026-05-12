@@ -1,0 +1,172 @@
+
+# ==============================================================================
+# WINDOW SETTINGS
+# ==============================================================================
+[window]
+# Dimensions of the window in character columns and lines.
+# Useful if you want the terminal to open at a specific size every time.
+# dimensions = { columns = 100, lines = 24 }
+
+# Blank space added around the window in pixels. This keeps text from hugging the edges.
+padding = { x = 8, y = 0 }
+
+# Dynamic padding spreads excess space evenly. Keeping this 'false' makes resizing slightly
+# snappier and prevents text from shifting slightly during window resizes.
+dynamic_padding = false
+
+# Window decorations (Title bar). Options: "Full", "None", "Transparent", "Buttonless"
+# Setting to "None" removes the OS title bar completely for a cleaner, faster draw.
+decorations = "Full"
+
+# Opacity of the background. 1.0 is 100% fully opaque (no transparency overhead).
+opacity = 0.85
+
+# Startup Mode. Options: "Windowed", "Maximized", "Fullscreen", "SimpleFullscreen"
+startup_mode = "Windowed"
+
+
+# ==============================================================================
+# SCROLLING (Resource Efficiency)
+# ==============================================================================
+[scrolling]
+# Maximum number of lines in the scrollback buffer.
+# Lowering this (e.g., to 5000) makes Alacritty more memory efficient. 
+# 10,000 is a great balance between history retention and low RAM usage.
+history = 5000
+
+# Number of lines scrolled for every line scrolled by the mouse wheel.
+multiplier = 3
+
+
+# ==============================================================================
+# FONT SETTINGS
+# ==============================================================================
+[font]
+# Font size in points.
+size = 11.5
+
+# Offset modifies the vertical or horizontal spacing between characters.
+offset = { x = 0 , y = 0 }
+
+# Normal (roman) font face
+[font.normal]
+# Change this to your preferred font. "JetBrainsMono Nerd Font", "Fira Code", "Hack", etc.
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+# Bold font face
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+# Italic font face
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+
+# ==============================================================================
+# COLORS (Nightly Inspired Theme)
+# ==============================================================================
+# This is a deep, cool dark theme with vibrant accents. 
+# All highlight and search colors are explicitly defined for maximum visibility.
+
+[colors.primary]
+background = "#0F111A" # Deep nightly blue/black
+foreground = "#A6ACCD" # Soft, readable slate-white
+dim_foreground = "#676E95"
+bright_foreground = "#FFFFFF"
+
+# ------------------------------------------------------------------------------
+# HIGHLIGHTING FIXES (Selection & Search)
+# ------------------------------------------------------------------------------
+[colors.selection]
+# The text you highlight with your mouse. 
+# Background is a vibrant neon purple/blue so it's impossible to miss.
+# Foreground is forced to stark white for perfect readability.
+text = "#FFFFFF"
+background = "#5C6370" # Or try "#4D5BCE" for an even punchier blue
+
+[colors.search.matches]
+# Colors for text when you use Alacritty's search function (Ctrl+Shift+F)
+foreground = "#0F111A" # Dark text
+background = "#FFCB6B" # Bright yellow background
+
+[colors.search.focused_match]
+foreground = "#0F111A" # Dark text
+background = "#C792EA" # Bright purple for the actively selected match
+
+[colors.hints.start]
+foreground = "#0F111A"
+background = "#FFCC66"
+
+[colors.hints.end]
+foreground = "#0F111A"
+background = "#FFCC66"
+
+# ------------------------------------------------------------------------------
+# CURSOR COLORS
+# ------------------------------------------------------------------------------
+[colors.cursor]
+text = "#0F111A"     # Color of the text under the cursor
+cursor = "#82AAFF"   # A nice, glowing nightly blue cursor
+
+# ------------------------------------------------------------------------------
+# STANDARD TERMINAL COLORS (0-7)
+# ------------------------------------------------------------------------------
+[colors.normal]
+black   = "#1B1E28"
+red     = "#F07178" # Soft neon red
+green   = "#C3E88D" # Nightly mint green
+yellow  = "#FFCB6B" # Warm yellow
+blue    = "#82AAFF" # Sky blue
+magenta = "#C792EA" # Bright lavender/purple
+cyan    = "#89DDFF" # Bright cyan
+white   = "#A6ACCD" # Slate white
+
+# ------------------------------------------------------------------------------
+# BRIGHT TERMINAL COLORS (8-15)
+# ------------------------------------------------------------------------------
+[colors.bright]
+black   = "#4A5057"
+red     = "#FF8B92"
+green   = "#DDF2A6"
+yellow  = "#FFE585"
+blue    = "#9CC4FF"
+magenta = "#E1ACFF"
+cyan    = "#A3F7FF"
+white   = "#FFFFFF"
+
+
+# ==============================================================================
+# CURSOR SETTINGS
+# ==============================================================================
+[cursor]
+# Cursor style. Options: "Block", "Underline", "Beam"
+style = { shape = "Block", blinking = "Off" }
+
+# If true, the cursor blinks when the terminal is in focus.
+# Keeping it "Off" (above) slightly improves rendering efficiency.
+unfocused_hollow = true
+
+
+# ==============================================================================
+# SELECTION & MOUSE
+# ==============================================================================
+[selection]
+# Automatically copy selected text to the primary clipboard (Linux only).
+save_to_clipboard = true
+
+[mouse]
+# Hide the mouse cursor when typing for a cleaner workspace.
+hide_when_typing = true
+
+[general]
+# ==============================================================================
+# ALACRITTY CONFIGURATION
+# ==============================================================================
+
+# Live config reload (Changes are applied instantly when you save the file)
+# Disabling this can save a microscopic amount of resources, but leaving it true 
+# is highly recommended for easy tweaking.
+live_config_reload = true
