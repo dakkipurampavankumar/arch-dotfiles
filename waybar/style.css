@@ -1,0 +1,87 @@
+* {
+    /* Uses the Nerd Font you just installed */
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    /* Nightly Background: #0F111A with 85% transparency */
+    background-color: rgba(15, 17, 26,1.00);
+    color: #A6ACCD; /* Nightly White/Slate */
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+/* Base styling for all modules */
+#workspaces, #window, #clock, #battery, #cpu, #memory, #network, #tray, #pulseaudio, #bluetooth {
+    padding: 0 12px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    background-color: rgba(92, 99, 112, 0.2); /* Subtle highlight behind text */
+}
+
+/* Customizing specific module colors to match Nightly theme */
+#workspaces button {
+    color: #676E95;
+    padding: 0 6px;
+}
+
+#workspaces button.focused {
+    color: #82AAFF; /* Bright Blue for active workspace */
+    background-color: rgba(130, 170, 255, 0.1);
+}
+
+#workspaces button.urgent {
+    color: #F07178; /* Red for urgent notifications */
+}
+
+#clock {
+    color: #C792EA; /* Purple for the clock */
+}
+
+#battery {
+    color: #C3E88D; /* Green for battery */
+}
+
+#battery.warning {
+    color: #FFCB6B; /* Yellow if low */
+}
+
+#battery.critical {
+    color: #F07178; /* Red if dying */
+}
+
+#network {
+    color: #89DDFF; /* Cyan for WiFi */
+}
+
+#cpu {
+    color: #FFCB6B; /* Yellow for CPU */
+}
+
+#memory {
+    color: #82AAFF; /* Blue for RAM */
+}
+
+#pulseaudio {
+    color: #89DDFF; 
+}
+
+#pulseaudio.muted {
+    color: #676E95; 
+}
+
+#bluetooth {
+    color: #82AAFF; 
+}
+
+#bluetooth.connected {
+    color: #C3E88D; 
+}
+
+#bluetooth.disabled {
+    color: #676E95; 
+}
