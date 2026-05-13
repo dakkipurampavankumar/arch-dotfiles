@@ -1,0 +1,4 @@
+[mgr]
+prepend_keymap = [
+    { on = "E", run = 'shell "alacritty -e nvim \"$1\"" --confirm --orphan', desc = "Open Neovim in a new window" }
+]
