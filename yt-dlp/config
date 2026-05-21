@@ -1,7 +1,7 @@
 # ==========================================
 # File Paths & Naming
 # ==========================================
--o "~/mnt/PAVAN/Videos/yt-dlp/%(title)s [%(id)s].%(ext)s"
+-o "/mnt/PAVAN/Videos/yt-dlp/%(title)s [%(id)s].%(ext)s"
 
 # ==========================================
 # Video & Audio Quality

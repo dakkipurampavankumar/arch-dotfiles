@@ -1,4 +1,5 @@
 require('core.options')
+require('core.keymaps')
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -10,7 +11,7 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
-require('lazy').setup()
+require('lazy').setup('plugins')
 
 -- Force transparency across all Neovim UI elements
 local transparent_hls = {

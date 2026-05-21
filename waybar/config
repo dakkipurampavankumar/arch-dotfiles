@@ -35,12 +35,11 @@
     },
     "cpu": {
         // EFFICIENT: Updates every 10 seconds
-        "interval": 2,
+        "interval": 1,
         "format": " {usage}%"
     },
     "memory": {
-        // EFFICIENT: Updates every 10 seconds
-        "interval": 2,
+        "interval": 1,
         "format": " {}%",
 	"on-click": "alacritty -e htop"
     },
