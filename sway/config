@@ -17,3 +17,6 @@ include /etc/sway/config.d/*
 
 # Modular User Includes
 include ~/.config/sway/config.d/*.conf
+
+#autostart valent service 
+exec valent --gapplication-service
