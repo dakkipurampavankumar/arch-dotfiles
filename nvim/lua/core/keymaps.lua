@@ -82,12 +82,3 @@ end, { desc = 'Go to next diagnostic message' })
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
-
--- Auto-pair standard brackets and quotes, then move cursor inside
---vim.keymap.set('i', '(', '()<Left>', { noremap = true })
---vim.keymap.set('i', '[', '[]<Left>', { noremap = true })
---vim.keymap.set('i', '"', '""<Left>', { noremap = true })
---vim.keymap.set('i', "'", "''<Left>", { noremap = true })
-
--- The magic "Enter" sequence for C-style blocks
-vim.keymap.set('i', '{<CR>', '{<CR>}<Esc>O', { noremap = true })
