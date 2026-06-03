@@ -6,12 +6,12 @@ zathura = [
     { run = 'zathura %s', orphan = true, desc = "Open with Zathura" }
 ]
 terminal = [
-    { run = 'alacritty --working-directory %s', orphan = true, desc = "Open terminal here" }
+    { run = 'kitty --working-directory %s', orphan = true, desc = "Open terminal here" }
 ]
 
 [open]
 prepend_rules = [
-    # Pressing Enter on a folder opens Alacritty in that path
+    # Pressing Enter on a folder opens kitty in that path
     { mime = "inode/directory", use = "terminal" },
     # Fallback directory match just in case the MIME check fails
     { url = "*/", use = "terminal" },

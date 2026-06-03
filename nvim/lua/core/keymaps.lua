@@ -82,3 +82,36 @@ end, { desc = 'Go to next diagnostic message' })
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- F5 to run any program
+vim.keymap.set('n', '<F5>', function()
+  -- 1. Save the file before running
+  vim.cmd('write')
+
+  -- 2. Get the absolute path to avoid directory/path issues
+  local filetype = vim.bo.filetype
+  local file = vim.fn.expand('%:p')       -- e.g., /home/pavan/hello.c
+  local out_file = vim.fn.expand('%:p:r') -- e.g., /home/pavan/hello
+
+  -- 3. Define the run commands
+  local commands = {
+    python = 'python3 ' .. file,
+    javascript = 'node ' .. file,
+    sh = 'bash ' .. file,
+    go = 'go run ' .. file,
+    -- Notice we dropped the './' here because out_file is already a full absolute path
+    c = 'gcc ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
+    cpp = 'g++ ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
+  }
+
+  -- 4. Execute the command
+  local cmd = commands[filetype]
+
+  if cmd then
+    vim.cmd('botright 12split | term ' .. cmd)
+    vim.cmd('startinsert')
+  else
+    print('No F5 run command configured for filetype: ' .. filetype)
+  end
+
+end, { desc = 'Run code based on filetype' })

@@ -41,7 +41,7 @@
     "memory": {
         "interval": 1,
         "format": " {}%",
-	"on-click": "alacritty -e htop"
+	"on-click": "kitty -e htop"
     },
     "battery": {
         // EFFICIENT: Updates every 30 seconds
@@ -62,7 +62,7 @@
         "format-ethernet": "  Connected",
         "format-disconnected": "⚠ Disconnected",
         "tooltip-format": "{ifname} via {gwaddr} ",
-	"on-click": "alacritty -e nmtui"
+	"on-click": "kitty -e nmtui"
     },
     "tray": {
         "spacing": 10
@@ -81,7 +81,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "alacritty -e pulsemixer"
+        "on-click": "kitty -e pulsemixer"
     },
 
     "bluetooth": {
@@ -92,6 +92,6 @@
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "on-click": "alacritty -e bluetoothctl"
+        "on-click": "kitty -e bluetoothctl"
     }
 }
