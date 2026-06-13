@@ -1,0 +1,30 @@
+# Enable system clipboard for copying text (y)
+set selection-clipboard clipboard
+
+# Invert document colors (Dark mode for PDFs)
+set recolor "true"
+
+# Crucial: Prevents images from turning into weird photo negatives
+set recolor-keephue "true"
+
+# Adjust scrolling speed
+set scroll-step 50
+
+# ---------------------------------------------------------
+# TRANSPARENCY & THEMING (Midnight Blue with Alpha)
+# ---------------------------------------------------------
+
+# The background color of the PDF pages (85% Opacity)
+set recolor-lightcolor "rgba(15, 17, 26, 0.45)"
+
+# The text/foreground color of the PDF (Soft matte off-white)
+set recolor-darkcolor "#e0e0e0"
+
+# Match the Zathura window background to the same transparency
+set default-bg "rgba(15, 17, 26, 0.75)"
+
+# Status bar (Matching transparent background)
+set statusbar-bg "rgba(15, 17, 26, 0.85)"
+
+# Electric cyan accent for the status bar text
+set statusbar-fg "#e0e0e0"
