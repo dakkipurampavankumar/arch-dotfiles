@@ -2,11 +2,11 @@
     "layer": "top",
     "position": "top",
     "height": 30,
-    "spacing": 12,
+    "spacing": 4,
     // Choose what you want to see
-    "modules-left": ["sway/workspaces", "sway/window"], 
-    "modules-center": ["clock"],
-    "modules-right": ["network","bluetooth","pulseaudio","cpu", "memory", "battery","tray"],
+    "modules-left": ["clock", "sway/scratchpad", "sway/window"], 
+    "modules-center": ["sway/workspaces"],
+    "modules-right": ["network","bluetooth","pulseaudio","cpu", "memory","custom/nightlight", "battery","tray"],
 
     // -- MODULE SETTINGS --
 
@@ -25,6 +25,7 @@
         }
     },
     "sway/window": {
+        "show-empty" : false,
         "max-length": 100
     },
     "clock": {
@@ -35,17 +36,17 @@
     },
     "cpu": {
         // EFFICIENT: Updates every 10 seconds
-        "interval": 1,
+        "interval": 2,
         "format": " {usage}%"
     },
     "memory": {
-        "interval": 1,
+        "interval": 2,
         "format": " {}%",
 	"on-click": "kitty -e htop"
     },
     "battery": {
         // EFFICIENT: Updates every 30 seconds
-        "interval": 30,
+        "interval": 60,
         "states": {
             "warning": 30,
             "critical": 15
@@ -88,10 +89,43 @@
         "format": " {status}",
         "format-disabled": " Off",
         "format-connected": " {device_alias}",
-        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "format-connected-battery": " {device_alias} - {device_battery_percentage}%",
+        "tooltip-format": "{device_battery_percentage}%",
+        "tooltip-format-connected": "{device_battery_percentage}%",
+        "tooltip-format-enumerate-connected": "{device_battery_percentage}%",
         "on-click": "kitty -e bluetoothctl"
+    },
+    
+    "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": true,
+    "format-icons": ["", ""],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}"
+    },
+
+    "temperature": {
+    // Points directly to the Ryzen CPU thermal sensor
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "interval" : 5,
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""],
+    "tooltip": true,
+    "tooltip-format": "CPU Temperature"
+    },
+
+    "custom/nightlight": {
+    "format": "{icon}",
+    "return-type": "json",
+    "format-icons": {
+        "on": "",  // Moon icon (requires FontAwesome)
+        "off": ""  // Sun icon (requires FontAwesome)
+    },
+    "exec": "~/.config/waybar/scripts/nightlight.sh status",
+    "on-click": "~/.config/waybar/scripts/nightlight.sh toggle",
+    "interval": "once",
+    "signal": 12
     }
 }
+

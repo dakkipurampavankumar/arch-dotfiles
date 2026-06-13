@@ -1,12 +1,15 @@
 [opener]
 edit = [
-    { run = 'nvim %s', block = true, desc = "Neovim" }
+    { run = 'kitty -e nvim "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Neovim", for = "unix" }
 ]
 zathura = [
-    { run = 'zathura %s', orphan = true, desc = "Open with Zathura" }
+    { run = 'zathura "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open with Zathura", for = "unix" }
 ]
 terminal = [
-    { run = 'kitty --working-directory %s', orphan = true, desc = "Open terminal here" }
+    { run = 'kitty --working-directory "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open terminal here", for = "unix" }
+]
+mpv = [
+    { run = 'mpv "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open with mpv", for = "unix" }
 ]
 
 [open]
@@ -15,6 +18,10 @@ prepend_rules = [
     { mime = "inode/directory", use = "terminal" },
     # Fallback directory match just in case the MIME check fails
     { url = "*/", use = "terminal" },
+
+    # Open Videos and Audio with mpv
+    { mime = "video/*", use = "mpv" },
+    { mime = "audio/*", use = "mpv" },
 
     # Open PDFs with Zathura
     { mime = "application/pdf", use = "zathura" },

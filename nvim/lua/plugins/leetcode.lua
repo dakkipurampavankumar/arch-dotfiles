@@ -1,6 +1,10 @@
 return {
     "kawre/leetcode.nvim",
     build = ":TSUpdate html",
+    lazy = 'true',
+    cmd = {
+        "Leet"
+    }, 
     dependencies = {
         "nvim-telescope/telescope.nvim",
         "nvim-lua/plenary.nvim", -- required by telescope
@@ -14,5 +18,6 @@ return {
         -- configuration goes here
         arg = "leetcode.nvim",
         lang = "c", -- or "c" based on your preference
+        image_support = true,
     },
 }

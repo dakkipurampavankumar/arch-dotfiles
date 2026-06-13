@@ -1,5 +1,4 @@
 * {
-    /* Uses the Nerd Font you just installed */
     font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 13px;
     font-weight: bold;
@@ -8,80 +7,141 @@
 }
 
 window#waybar {
-    /* Nightly Background: #0F111A with 85% transparency */
-    background-color: rgba(15, 17, 26,1.00);
-    color: #A6ACCD; /* Nightly White/Slate */
+    background-color: rgba(15, 17, 26, 0.85);
+    /* Softened base text: Slightly brighter than before for clarity */
+    color: #B0B6D5; 
     transition-property: background-color;
     transition-duration: .5s;
 }
 
 /* Base styling for all modules */
-#workspaces, #window, #clock, #battery, #cpu, #memory, #network, #tray, #pulseaudio, #bluetooth {
+#mpd, #workspaces, #window, #clock, #battery, #cpu, #memory, #network, #tray, #pulseaudio, #bluetooth, #scratchpad, #temperature, #custom-nightlight {
     padding: 0 12px;
     margin: 4px 2px;
     border-radius: 8px;
-    background-color: rgba(92, 99, 112, 0.2); /* Subtle highlight behind text */
+    /* Slightly increased opacity on the background box to cure the "dullness" */
+    background-color: rgba(92, 99, 112, 0.25); 
 }
 
-/* Customizing specific module colors to match Nightly theme */
+/* =========================================
+   WORKSPACES
+========================================= */
 #workspaces button {
-    color: #676E95;
+    /* Mid-Tone Slate: Replaces the "too dim" #676E95. Readable but clearly inactive. */
+    color: #8892BD; 
     padding: 0 6px;
 }
 
 #workspaces button.focused {
-    color: #82AAFF; /* Bright Blue for active workspace */
-    background-color: rgba(130, 170, 255, 0.1);
+    /* Soft Periwinkle Blue: Not harsh, but clearly highlighted */
+    color: #80A8FD; 
+    background-color: rgba(128, 168, 253, 0.15);
 }
 
 #workspaces button.urgent {
-    color: #F07178; /* Red for urgent notifications */
+    /* Matte Red */
+    color: #E57A82; 
 }
 
+/* =========================================
+   SYSTEM STATES (Phantom Fix)
+========================================= */
+window#waybar.empty #window {
+    background-color: transparent;
+    color: transparent;
+    opacity: 0; 
+    padding: 0px;
+    margin: 0px;
+}
+
+/* =========================================
+   MODULE COLORS (Matte Pastel Palette)
+========================================= */
 #clock {
-    color: #C792EA; /* Purple for the clock */
+    /* Soft Lavender */
+    color: #BE95E5; 
 }
 
 #battery {
-    color: #C3E88D; /* Green for battery */
+    /* Muted Mint Green */
+    color: #B3E081; 
 }
 
 #battery.warning {
-    color: #FFCB6B; /* Yellow if low */
+    /* Warm Ochre/Yellow */
+    color: #EBCB7B; 
 }
 
 #battery.critical {
-    color: #F07178; /* Red if dying */
+    /* Matte Red */
+    color: #E57A82; 
+    animation: blink 2s steps(1) infinite;
 }
 
 #network {
-    color: #89DDFF; /* Cyan for WiFi */
+    /* Soft Sky Cyan */
+    color: #89D1EE; 
 }
 
 #cpu {
-    color: #FFCB6B; /* Yellow for CPU */
+    /* Warm Ochre/Yellow */
+    color: #EBCB7B; 
 }
 
 #memory {
-    color: #82AAFF; /* Blue for RAM */
+    /* Soft Periwinkle Blue */
+    color: #80A8FD; 
 }
 
 #pulseaudio {
-    color: #89DDFF; 
+    /* Soft Sky Cyan */
+    color: #89D1EE; 
 }
 
 #pulseaudio.muted {
-    color: #676E95; 
+    /* Mid-Tone Slate */
+    color: #8892BD; 
 }
 
 #bluetooth {
-    color: #82AAFF; 
+    /* Soft Periwinkle Blue */
+    color: #80A8FD; 
 }
 
 #bluetooth.connected {
-    color: #C3E88D; 
+    /* Muted Mint Green */
+    color: #B3E081; 
 }
 
 #bluetooth.disabled {
-    color: #676E95; 
+    /* Mid-Tone Slate */
+    color: #8892BD; 
+}
+
+#temperature {
+    /* Soft Sky Cyan */
+    color: #89D1EE; 
+}
+
+#temperature.critical {
+    /* Matte Red */
+    color: #E57A82; 
+    animation: blink 2s steps(1) infinite;
+}
+
+/* =========================================
+   CUSTOM MODULES
+========================================= */
+#custom-nightlight.on {
+    /* Warm Ochre/Yellow */
+    color: #EBCB7B; 
+}
+
+#custom-nightlight.off {
+    /* Mid-Tone Slate */
+    color: #8892BD; 
+}
+
+@keyframes blink {
+    50% { color: transparent; }
 }

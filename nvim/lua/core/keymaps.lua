@@ -115,3 +115,9 @@ vim.keymap.set('n', '<F5>', function()
   end
 
 end, { desc = 'Run code based on filetype' })
+
+--Navigating when in insert mode 
+vim.keymap.set('i', '<C-h>', '<Left>', opts)
+vim.keymap.set('i', '<C-j>', '<Down>', opts)
+vim.keymap.set('i', '<C-k>', '<Up>', opts)
+vim.keymap.set('i', '<C-l>', '<Right>', opts)
