@@ -26,6 +26,8 @@ local transparent_hls = {
   "EndOfBuffer",
   "TelescopeNormal",
   "TelescopeBorder",
+  "NormalFloat",
+  "FloatBorder"
 }
 
 for _, hl in ipairs(transparent_hls) do

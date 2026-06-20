@@ -8,3 +8,6 @@ browser_display_mode = "columns"
 autocenter_mode = "yes"
 centered_cursor = "yes"
 user_interface = "alternative"
+
+media_library_albums_split_by_date = "no"
+media_library_hide_album_dates = "yes"

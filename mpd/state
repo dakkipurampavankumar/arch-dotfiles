@@ -1,8 +1,8 @@
 sw_volume: 98
 audio_device_state:1:PipeWire Sound Server
-state: pause
-current: 7
-time: 82.396
+state: play
+current: 5
+time: 102.174
 random: 0
 repeat: 1
 single: 0
@@ -12,36 +12,10 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:01. Dipiri Dipiri.flac
-1:02. Kayyala Chindhata.flac
-2:03. Bring It On.flac
-3:04. Chikkadpally Centre.flac
-4:05. Swaasa Meedha Dhyaasa.flac
-5:01. Top Lesi Poddi.flac
-6:02. Ganapathi Bappa.flac
-7:03. Shankarabharanamtho.flac
-8:04. Run Run (Remix).flac
-9:05. Run Run.flac
-10:06. Violin Song.flac
-11:Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}.zip/Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}/01. Paye Paye.flac
-12:Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}.zip/Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}/02. Dasu Bindasu.flac
-13:Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}.zip/Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}/03. Arerey Manasa.flac
-14:Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}.zip/Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}/04. Falaknuma Mama.flac
-15:Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}.zip/Falaknuma Das (2019) [FLAC] {Sony Music, 190759 71612}/05. Tum Miley Ho.flac
-16:01 - Oohalu Oorege Gaalanthaa - Haricharan, Keerthana.flac
-17:02 - Manasainadedo - Vivek Sagar.flac
-18:03 - O Cheli Thaara - Haricharan.flac
-19:04 - Kanulalo Thadigaa - Chaitra Ambadipudi.flac
-20:01. Ee Babu Gariki.flac
-21:02. Chinuku Taake.flac
-22:03. Raalupoola Ragamala.flac
-23:04. Merise Merise.flac
-24:05. Aanandamayenu.flac
-25:06. Spitfire Friends.flac
-26:11 Eekshanam Swyamwaram.flac
-27:Keedaa Cola - Side B (Original Motion Picture Soun/01. Sakkani Bomma.flac
-28:Keedaa Cola - Side B (Original Motion Picture Soun/02. Emantivi Emantivi.flac
-29:Keedaa Cola - Side B (Original Motion Picture Soun/03. Pattana O Pattu.flac
-30:Keedaa Cola - Side B (Original Motion Picture Soun/04. Naa Saavu Nen Sastha.flac
-31:Keedaa Cola - Side B (Original Motion Picture Soun/05. The Rage of Jeevan.flac
+0:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/01 - Hemachandra - Chudandi Saaru.flac
+1:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/02 - Dhanunjay - Po Pove Yekantham.flac
+2:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/03 - S. Janaki, Deepu - Amma Amma.flac
+3:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/04 - Hemachandra - Ori Devuda.flac
+4:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/05 - Revanth - Luckkanna Mate Nillu.flac
+5:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/06 - Revanth - Nippulanti Nirudyogi.flac
 playlist_end

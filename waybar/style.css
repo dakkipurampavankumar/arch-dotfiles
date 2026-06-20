@@ -6,12 +6,23 @@
     border-radius: 0;
 }
 
+/* 1. Active State: Your custom rgba Neovim-matched background */
 window#waybar {
-    background-color: rgba(15, 17, 26, 0.85);
-    /* Softened base text: Slightly brighter than before for clarity */
-    color: #B0B6D5; 
+    background-color: rgba(15, 17, 26, 0.80);
+    /* Tokyo Night Foreground - Crisp but easy on the eyes */
+    color: #A9B1D6; 
     transition-property: background-color;
     transition-duration: .5s;
+}
+
+/* 2. Empty State: Fully transparent when viewing just the wallpaper */
+window#waybar.empty {
+    background-color: transparent;
+}
+
+/* The Magic Fix: Lift the text off the anime wallpaper without being harsh */
+window#waybar.empty * {
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 /* Base styling for all modules */
@@ -19,28 +30,33 @@ window#waybar {
     padding: 0 12px;
     margin: 4px 2px;
     border-radius: 8px;
-    /* Slightly increased opacity on the background box to cure the "dullness" */
-    background-color: rgba(92, 99, 112, 0.25); 
+    background-color: rgba(92, 99, 112, 0.35); 
+    transition: background-color 0.3s ease;
+}
+
+/* 3. Empty State Module Shield */
+window#waybar.empty #image.logo,#mpd, window#waybar.empty #workspaces, window#waybar.empty #clock, window#waybar.empty #battery, window#waybar.empty #cpu, window#waybar.empty #memory, window#waybar.empty #network, window#waybar.empty #tray, window#waybar.empty #pulseaudio, window#waybar.empty #bluetooth, window#waybar.empty #scratchpad, window#waybar.empty #temperature, window#waybar.empty #custom-nightlight {
+    background-color: rgba(25, 28, 38, 0.65);
 }
 
 /* =========================================
    WORKSPACES
 ========================================= */
 #workspaces button {
-    /* Mid-Tone Slate: Replaces the "too dim" #676E95. Readable but clearly inactive. */
-    color: #8892BD; 
+    /* Muted Blue-Grey: Distinctly inactive but legible */
+    color: #565F89; 
     padding: 0 6px;
 }
 
 #workspaces button.focused {
-    /* Soft Periwinkle Blue: Not harsh, but clearly highlighted */
-    color: #80A8FD; 
-    background-color: rgba(128, 168, 253, 0.15);
+    /* Rich Tokyo Night Blue: Pops without being harsh */
+    color: #7AA2F7; 
+    background-color: rgba(122, 162, 247, 0.15); 
 }
 
 #workspaces button.urgent {
-    /* Matte Red */
-    color: #E57A82; 
+    /* Soft Coral Red */
+    color: #F7768E; 
 }
 
 /* =========================================
@@ -52,80 +68,81 @@ window#waybar.empty #window {
     opacity: 0; 
     padding: 0px;
     margin: 0px;
+    box-shadow: none;
 }
 
 /* =========================================
-   MODULE COLORS (Matte Pastel Palette)
+   MODULE COLORS (Curated "Sweet Spot" Palette)
 ========================================= */
 #clock {
-    /* Soft Lavender */
-    color: #BE95E5; 
+    /* Rich Amethyst */
+    color: #BB9AF7; 
 }
 
 #battery {
-    /* Muted Mint Green */
-    color: #B3E081; 
+    /* Clean Tech Green */
+    color: #9ECE6A; 
 }
 
 #battery.warning {
-    /* Warm Ochre/Yellow */
-    color: #EBCB7B; 
+    /* Warm Gold/Yellow */
+    color: #E0AF68; 
 }
 
 #battery.critical {
-    /* Matte Red */
-    color: #E57A82; 
+    /* Soft Coral Red */
+    color: #F7768E; 
     animation: blink 2s steps(1) infinite;
 }
 
 #network {
-    /* Soft Sky Cyan */
-    color: #89D1EE; 
+    /* Crisp Cyan */
+    color: #7DCFFF; 
 }
 
 #cpu {
-    /* Warm Ochre/Yellow */
-    color: #EBCB7B; 
+    /* Warm Gold/Yellow */
+    color: #E0AF68; 
 }
 
 #memory {
-    /* Soft Periwinkle Blue */
-    color: #80A8FD; 
+    /* Rich Tokyo Night Blue */
+    color: #7AA2F7; 
 }
 
 #pulseaudio {
-    /* Soft Sky Cyan */
-    color: #89D1EE; 
+    /* Crisp Cyan */
+    color: #7DCFFF; 
 }
 
 #pulseaudio.muted {
-    /* Mid-Tone Slate */
-    color: #8892BD; 
+    /* Muted Blue-Grey */
+    color: #565F89; 
 }
 
 #bluetooth {
-    /* Soft Periwinkle Blue */
-    color: #80A8FD; 
+    /* Rich Tokyo Night Blue */
+    color: #7AA2F7; 
 }
 
 #bluetooth.connected {
-    /* Muted Mint Green */
-    color: #B3E081; 
+    /* Clean Tech Green */
+    color: #9ECE6A; 
 }
 
 #bluetooth.disabled {
-    /* Mid-Tone Slate */
-    color: #8892BD; 
+    /* Muted Blue-Grey */
+    color: #565F89; 
 }
 
 #temperature {
-    /* Soft Sky Cyan */
-    color: #89D1EE; 
+    /* Peach/Orange (Perfectly bridges yellow and red for a balanced look) */
+    color: #FF9E64; 
 }
 
 #temperature.critical {
-    /* Matte Red */
-    color: #E57A82; 
+    /* Soft Coral Red */
+    color: #F7768E; 
     animation: blink 2s steps(1) infinite;
 }
 
@@ -133,15 +150,24 @@ window#waybar.empty #window {
    CUSTOM MODULES
 ========================================= */
 #custom-nightlight.on {
-    /* Warm Ochre/Yellow */
-    color: #EBCB7B; 
+    /* Warm Gold/Yellow */
+    color: #E0AF68; 
 }
 
 #custom-nightlight.off {
-    /* Mid-Tone Slate */
-    color: #8892BD; 
+    /* Muted Blue-Grey */
+    color: #565F89; 
 }
 
 @keyframes blink {
-    50% { color: transparent; }
+    50% { color: transparent; text-shadow: none; }
 }
+
+#image.logo {
+    padding: 0 12px;
+    margin: 4px 10px;
+    border-radius: 8px;
+    background-color: rgba(92, 99, 112, 0.35); 
+    transition: background-color 0.3s ease;
+}
+

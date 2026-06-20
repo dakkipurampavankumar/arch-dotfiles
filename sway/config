@@ -10,7 +10,7 @@ set $term kitty
 set $menu fuzzel
 
 # Display Output
-output * bg /home/pavan/Pictures/Maahishmathi.jpg fill 
+output * bg /home/pavan/Pictures/anime-girl-2.png fill 
 
 # System Default Includes
 include /etc/sway/config.d/*
@@ -19,4 +19,10 @@ include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*.conf
 
 #autostart valent service 
-exec valent --gapplication-service
+#exec valent --gapplication-service
+
+exec_always autotiling
+
+# Clipboard Manager: Start cliphist and listen to Wayland clipboard
+exec wl-paste --type text --watch cliphist store
+exec wl-paste --type image --watch cliphist store

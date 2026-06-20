@@ -88,23 +88,38 @@ vim.keymap.set('n', '<F5>', function()
   -- 1. Save the file before running
   vim.cmd('write')
 
-  -- 2. Get the absolute path to avoid directory/path issues
+  -- 2. Get absolute paths to avoid directory/path issues
   local filetype = vim.bo.filetype
-  local file = vim.fn.expand('%:p')       -- e.g., /home/pavan/hello.c
-  local out_file = vim.fn.expand('%:p:r') -- e.g., /home/pavan/hello
+  local file = vim.fn.expand('%:p')       -- e.g., /home/pavan/project/main.c
+  local out_file = vim.fn.expand('%:p:r') -- e.g., /home/pavan/project/main
+  local file_dir = vim.fn.expand('%:p:h') -- e.g., /home/pavan/project
 
-  -- 3. Define the run commands
+  -- 3. Base commands (cd into the file's directory first for safety)
+  local cd_cmd = 'cd ' .. file_dir .. ' && '
   local commands = {
-    python = 'python3 ' .. file,
-    javascript = 'node ' .. file,
-    sh = 'bash ' .. file,
-    go = 'go run ' .. file,
-    -- Notice we dropped the './' here because out_file is already a full absolute path
-    c = 'gcc ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
-    cpp = 'g++ ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
+    python = cd_cmd .. 'python3 ' .. file,
+    javascript = cd_cmd .. 'node ' .. file,
+    sh = cd_cmd .. 'bash ' .. file,
+    go = cd_cmd .. 'go run ' .. file,
+    c = cd_cmd .. 'gcc ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
+    cpp = cd_cmd .. 'g++ ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
   }
 
-  -- 4. Execute the command
+  -- 4. Smart handling for Rust
+  if filetype == 'rust' then
+    -- Searches upwards from the current file's directory for Cargo.toml
+    local is_cargo = vim.fn.findfile('Cargo.toml', file_dir .. ';')
+    
+    if is_cargo ~= '' then
+      -- If Cargo.toml is found, tell cargo exactly where it is located
+      commands.rust = 'cargo run --manifest-path ' .. is_cargo
+    else
+      -- Fallback for standalone .rs files
+      commands.rust = cd_cmd .. 'rustc ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file
+    end
+  end
+
+  -- 5. Execute the command
   local cmd = commands[filetype]
 
   if cmd then
@@ -114,10 +129,7 @@ vim.keymap.set('n', '<F5>', function()
     print('No F5 run command configured for filetype: ' .. filetype)
   end
 
-end, { desc = 'Run code based on filetype' })
-
---Navigating when in insert mode 
-vim.keymap.set('i', '<C-h>', '<Left>', opts)
+end, { desc = 'Run code based on filetype' })vim.keymap.set('i', '<C-h>', '<Left>', opts)
 vim.keymap.set('i', '<C-j>', '<Down>', opts)
 vim.keymap.set('i', '<C-k>', '<Up>', opts)
 vim.keymap.set('i', '<C-l>', '<Right>', opts)
