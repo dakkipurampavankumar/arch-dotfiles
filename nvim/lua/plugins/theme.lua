@@ -29,6 +29,19 @@ return {
       types = {},
       operators = {},
     },
+    custom_highlights = function(colors)
+      return {
+        NormalFloat = { bg = "none" },
+        FloatBorder = { bg = "none" },
+        NormalNC = { bg = "none" },
+        VertSplit = { bg = "none" },
+        WinSeparator = { bg = "none" },
+        Folded = { bg = "none" },
+        NonText = { bg = "none" },
+        SignColumn = { bg = "none" },
+        EndOfBuffer = { bg = "none" },
+      }
+    end,
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)

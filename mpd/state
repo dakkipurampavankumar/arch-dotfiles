@@ -1,8 +1,8 @@
-sw_volume: 98
+sw_volume: 100
 audio_device_state:1:PipeWire Sound Server
 state: play
-current: 5
-time: 102.174
+current: 13
+time: 98.273
 random: 0
 repeat: 1
 single: 0
@@ -12,10 +12,21 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/01 - Hemachandra - Chudandi Saaru.flac
-1:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/02 - Dhanunjay - Po Pove Yekantham.flac
-2:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/03 - S. Janaki, Deepu - Amma Amma.flac
-3:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/04 - Hemachandra - Ori Devuda.flac
-4:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/05 - Revanth - Luckkanna Mate Nillu.flac
-5:Raghuvaran B.Tech (2014) [FLAC] {Aditya Music, AMIL CD 7126}/06 - Revanth - Nippulanti Nirudyogi.flac
+0:Aagadu (2014) {Lahari, LR CD 3660} [FLAC - WAV]/Thaman SS - Aagadu (2014).cue/track0001
+1:Aagadu (2014) {Lahari, LR CD 3660} [FLAC - WAV]/Thaman SS - Aagadu (2014).cue/track0002
+2:Aagadu (2014) {Lahari, LR CD 3660} [FLAC - WAV]/Thaman SS - Aagadu (2014).cue/track0003
+3:Aagadu (2014) {Lahari, LR CD 3660} [FLAC - WAV]/Thaman SS - Aagadu (2014).cue/track0004
+4:Aagadu (2014) {Lahari, LR CD 3660} [FLAC - WAV]/Thaman SS - Aagadu (2014).cue/track0005
+5:Aagadu (2014) {Lahari, LR CD 3660} [FLAC - WAV]/Thaman SS - Aagadu (2014).cue/track0006
+6:Rabhasa (2014) {Aditya Music} [AMIL CD 6873] [16Bit-ACDRip-WAV]/Rabhasa.cue/track0001
+7:Rabhasa (2014) {Aditya Music} [AMIL CD 6873] [16Bit-ACDRip-WAV]/Rabhasa.cue/track0002
+8:Rabhasa (2014) {Aditya Music} [AMIL CD 6873] [16Bit-ACDRip-WAV]/Rabhasa.cue/track0003
+9:Rabhasa (2014) {Aditya Music} [AMIL CD 6873] [16Bit-ACDRip-WAV]/Rabhasa.cue/track0004
+10:Rabhasa (2014) {Aditya Music} [AMIL CD 6873] [16Bit-ACDRip-WAV]/Rabhasa.cue/track0005
+11:03 - GV Prakash Kumar - Neeve.flac
+12:Anirudh Ravichander - Kaathuvaakula Rendu Kaadhal (2022)/(24 BIT - 96000 HZ)/Rendu Kaadhal.flac
+13:01. Ram Miriyala - Tillu Anna DJ Pedithe.flac
+14:02. Anirudh Ravichander - Pataas Pilla.flac
+15:03. Siddhu Jonnalagadda - Nuvvala.flac
+16:04. Yamini Ghantasala - Nuvvala (Female).flac
 playlist_end

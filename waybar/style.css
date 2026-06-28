@@ -12,7 +12,6 @@ window#waybar {
     /* Tokyo Night Foreground - Crisp but easy on the eyes */
     color: #A9B1D6; 
     transition-property: background-color;
-    transition-duration: .5s;
 }
 
 /* 2. Empty State: Fully transparent when viewing just the wallpaper */
@@ -31,7 +30,6 @@ window#waybar.empty * {
     margin: 4px 2px;
     border-radius: 8px;
     background-color: rgba(92, 99, 112, 0.35); 
-    transition: background-color 0.3s ease;
 }
 
 /* 3. Empty State Module Shield */

@@ -22,6 +22,7 @@ return {
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-nvim-lsp',
   },
+  event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -117,57 +118,21 @@ return {
 
     -- Enable the following language servers
     --
-    -- Add any additional override configuration in the following tables. Available keys are:
-    -- - cmd (table): Override the default command used to start the server
-    -- - filetypes (table): Override the default list of associated filetypes for the server
-    -- - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-    -- - settings (table): Override the default settings passed when initializing the server.
+    -- Add any additional override configuration in the following tables.
     local servers = {
       clangd = {},
-      ts_ls = {},
       ruff = {},
-      pylsp = {
-        settings = {
-          pylsp = {
-            plugins = {
-              pyflakes = { enabled = false },
-              pycodestyle = { enabled = false },
-              autopep8 = { enabled = false },
-              yapf = { enabled = false },
-              mccabe = { enabled = false },
-              pylsp_mypy = { enabled = false },
-              pylsp_black = { enabled = false },
-              pylsp_isort = { enabled = false },
-            },
-          },
-        },
-      },
+      pyright = {}, -- Using pyright for types, ruff for linting (much faster than pylsp)
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       cssls = {},
-      tailwindcss = {},
-      dockerls = {},
-      sqlls = {},
-      terraformls = {},
-      jsonls = {},
-      yamlls = {},
       lua_ls = {
         settings = {
           Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-            runtime = { version = 'LuaJIT' },
-            workspace = {
-              checkThirdParty = false,
-              library = vim.api.nvim_get_runtime_file('', true),
-            },
-            diagnostics = {
-              globals = { 'vim' },
-              disable = { 'missing-fields' },
-            },
-            format = {
-              enable = false,
-            },
+            completion = { callSnippet = 'Replace' },
+            diagnostics = { globals = { 'vim' }, disable = { 'missing-fields' } },
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+            format = { enable = false },
           },
         },
       },

@@ -12,24 +12,3 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require('lazy').setup('plugins')
-
--- Force transparency across all Neovim UI elements
-local transparent_hls = {
-  "Normal",
-  "NormalNC",
-  "LineNr",
-  "Folded",
-  "NonText",
-  "SpecialKey",
-  "VertSplit",
-  "SignColumn",
-  "EndOfBuffer",
-  "TelescopeNormal",
-  "TelescopeBorder",
-  "NormalFloat",
-  "FloatBorder"
-}
-
-for _, hl in ipairs(transparent_hls) do
-  vim.api.nvim_set_hl(0, hl, { bg = "none", ctermbg = "none" })
-end
