@@ -1,6 +1,6 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
-  branch = 'master',
+  branch = 'main',
   build = ':TSUpdate',
   opts = {
     ensure_installed = {
