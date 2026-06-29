@@ -11,6 +11,7 @@ window#waybar {
     background-color: rgba(15, 17, 26, 0.80);
     /* Tokyo Night Foreground - Crisp but easy on the eyes */
     color: #A9B1D6; 
+    text-shadow: none;
     transition-property: background-color;
 }
 
@@ -21,14 +22,14 @@ window#waybar.empty {
 
 /* The Magic Fix: Lift the text off the anime wallpaper without being harsh */
 window#waybar.empty * {
-    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
+    /*text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);*/
 }
 
 /* Base styling for all modules */
 #mpd, #workspaces, #window, #clock, #battery, #cpu, #memory, #network, #tray, #pulseaudio, #bluetooth, #scratchpad, #temperature, #custom-nightlight {
     padding: 0 12px;
     margin: 4px 2px;
-    border-radius: 8px;
+    border-radius: 14px; /* Perfectly rounded pill shape */
     background-color: rgba(92, 99, 112, 0.35); 
 }
 
@@ -70,79 +71,42 @@ window#waybar.empty #window {
 }
 
 /* =========================================
-   MODULE COLORS (Curated "Sweet Spot" Palette)
+   MODULE COLORS (Minimalist Monochromatic)
 ========================================= */
-#clock {
-    /* Rich Amethyst */
-    color: #BB9AF7; 
+/* Base Color for ALL modules */
+#clock, #battery, #network, #cpu, #memory, #pulseaudio, #bluetooth, #temperature {
+    color: #C0CAF5; 
 }
 
-#battery {
-    /* Clean Tech Green */
-    color: #9ECE6A; 
-}
-
+/* -----------------------------------------
+   STATE-BASED WARNINGS (Color appears only on change)
+----------------------------------------- */
 #battery.warning {
-    /* Warm Gold/Yellow */
-    color: #E0AF68; 
+    color: #E0AF68; /* Orange */
 }
 
 #battery.critical {
-    /* Soft Coral Red */
-    color: #F7768E; 
+    color: #F7768E; /* Red */
     animation: blink 2s steps(1) infinite;
 }
 
-#network {
-    /* Crisp Cyan */
-    color: #7DCFFF; 
-}
-
-#cpu {
-    /* Warm Gold/Yellow */
-    color: #E0AF68; 
-}
-
-#memory {
-    /* Rich Tokyo Night Blue */
-    color: #7AA2F7; 
-}
-
-#pulseaudio {
-    /* Crisp Cyan */
-    color: #7DCFFF; 
+#network.disconnected {
+    color: #F7768E; /* Red when no internet */
 }
 
 #pulseaudio.muted {
-    /* Muted Blue-Grey */
-    color: #565F89; 
-}
-
-#bluetooth {
-    /* Rich Tokyo Night Blue */
-    color: #7AA2F7; 
-}
-
-#bluetooth.connected {
-    /* Clean Tech Green */
-    color: #9ECE6A; 
+    color: #565F89; /* Dim grey when muted */
 }
 
 #bluetooth.disabled {
-    /* Muted Blue-Grey */
-    color: #565F89; 
+    color: #565F89; /* Dim grey when off */
 }
 
-#temperature {
-    /* Peach/Orange (Perfectly bridges yellow and red for a balanced look) */
-    color: #FF9E64; 
-}
-
-#temperature.critical {
-    /* Soft Coral Red */
-    color: #F7768E; 
+#cpu.critical, #temperature.critical {
+    color: #F7768E; /* Red on high load/temp */
     animation: blink 2s steps(1) infinite;
 }
+
 
 /* =========================================
    CUSTOM MODULES
@@ -164,7 +128,7 @@ window#waybar.empty #window {
 #image.logo {
     padding: 0 12px;
     margin: 4px 10px;
-    border-radius: 8px;
+    border-radius: 14px;
     background-color: rgba(92, 99, 112, 0.35); 
     transition: background-color 0.3s ease;
 }

@@ -11,6 +11,9 @@ return {
       sign = true,
       icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
     },
+    bullet = {
+      right_pad = 0,
+    },
     code = {
       width = "block",
       right_pad = 1,

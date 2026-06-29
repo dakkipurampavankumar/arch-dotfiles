@@ -1,8 +1,7 @@
 return { -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
-  branch = 'main',
+  branch = 'master',
   build = ':TSUpdate',
-  main = 'nvim-treesitter', -- Explicitly tell Lazy to use the root module
   opts = {
     ensure_installed = {
       'c',
@@ -36,10 +35,8 @@ return { -- Highlight, edit, and navigate code
       'css',
       'html',
     },
-    -- Autoinstall languages that are not installed
     auto_install = true,
+    highlight = { enable = true },
+    indent = { enable = true },
   },
-  -- Note: highlight, indent, and incremental_selection modules have been 
-  -- removed from the main branch. Neovim handles syntax highlighting 
-  -- and indenting via Tree-sitter natively now.
 }

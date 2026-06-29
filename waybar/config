@@ -4,9 +4,9 @@
     "height": 20,
     "spacing": 4,
     // Choose what you want to see
-    "modules-left": ["image#logo", "sway/scratchpad", "sway/window"], 
+    "modules-left": ["image#logo", "clock", "sway/scratchpad", "sway/window"], 
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["network","bluetooth","pulseaudio","cpu", "memory","custom/nightlight", "battery","tray", "clock"],
+    "modules-right": ["network","bluetooth","pulseaudio","cpu", "memory","custom/nightlight", "battery","tray"],
 
     // -- MODULE SETTINGS --
 
