@@ -1,0 +1,5 @@
+~/arch-dotfiles/mpd/log
+~/arch-dotfiles/mpd/pid
+~/arch-dotfiles/mpd/state
+~/arch-dotfiles/mpd/database
+~/arch-dotfiles/mpd/sticker.sql
