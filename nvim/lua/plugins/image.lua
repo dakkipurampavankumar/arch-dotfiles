@@ -1,5 +1,6 @@
 return {
     "3rd/image.nvim",
+    ft = { "markdown", "norg", "org" },
     opts = {
         backend = "kitty", -- or "ueberzug" if you don't use Kitty/Wezterm
         max_width = 100,

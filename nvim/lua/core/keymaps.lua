@@ -129,7 +129,9 @@ vim.keymap.set('n', '<F5>', function()
     print('No F5 run command configured for filetype: ' .. filetype)
   end
 
-end, { desc = 'Run code based on filetype' })vim.keymap.set('i', '<C-h>', '<Left>', opts)
+end, { desc = 'Run code based on filetype' })
+
+vim.keymap.set('i', '<C-h>', '<Left>', opts)
 vim.keymap.set('i', '<C-j>', '<Down>', opts)
 vim.keymap.set('i', '<C-k>', '<Up>', opts)
 vim.keymap.set('i', '<C-l>', '<Right>', opts)

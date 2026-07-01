@@ -1,6 +1,15 @@
 return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
+  cmd = { "Telescope" },
+  keys = {
+    { "<leader>ff", function() require("telescope.builtin").find_files() end, desc = "Find Files" },
+    { "<leader>fg", function() require("telescope.builtin").live_grep() end, desc = "Find by Grep" },
+    { "<leader>fb", function() require("telescope.builtin").buffers() end, desc = "Find Buffers" },
+    { "<leader>fr", function() require("telescope.builtin").oldfiles() end, desc = "Find Recent files" },
+    { "<leader>fc", function() require("telescope.builtin").current_buffer_fuzzy_find() end, desc = "Find in Current buffer" },
+    { "<leader>fh", function() require("telescope.builtin").help_tags() end, desc = "Find Help tags" },
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
     -- The fzf-native extension and its build command
@@ -67,15 +76,5 @@ return {
 
     -- You must explicitly load the extension after setting it up
     telescope.load_extension("fzf")
-
-    -- ==========================================
-    -- Intuitive Keymaps (Starting with <leader>f)
-    -- ==========================================
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find Files' })
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find by Grep' })
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Find Buffers' })
-    vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = 'Find Recent files' })
-    vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, { desc = 'Find in Current buffer' })
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Find Help tags' })
   end
 }

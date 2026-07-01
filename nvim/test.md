@@ -1,3 +1,0 @@
-- main
-  - sub 2
-    - sub 4

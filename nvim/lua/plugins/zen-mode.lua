@@ -1,10 +1,10 @@
 return {
   "folke/zen-mode.nvim",
+  cmd = "ZenMode",
+  keys = { { "<leader>z", "<cmd>ZenMode<CR>", desc = "ZenMode" } },
   opts = {
     window = {
-      width = 130,   -- width of the centered text block
-      }
+      width = 130,
     },
-
-  vim.keymap.set('n', '<leader>z', ':ZenMode<CR>', {desc = "ZenMode"})
+  },
 }
