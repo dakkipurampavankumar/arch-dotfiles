@@ -5,6 +5,7 @@ return {
   priority = 1000, -- Keep this high so colors load before the UI draws
   opts = {
     flavour = "mocha", -- "latte", "frappe", "macchiato", or "mocha"
+    compile = true, -- Pre-compile theme to ~/.cache/nvim/catppuccin for faster startup
     transparent_background = true,
     term_colors = true,
     integrations = {
