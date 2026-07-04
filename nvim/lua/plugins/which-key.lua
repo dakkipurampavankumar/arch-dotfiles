@@ -11,8 +11,8 @@ return {
     -- This doesn't map the keys, it just tells which-key what to call the groups in the popup.
     spec = {
       { "<leader>c", group = "Code Action", mode = { "n", "x" } },
-      { "<leader>d", group = "Diagnostics/Document" },
-      { "<leader>e", group = "Explorer (Yazi)" },
+      { "<leader>d", group = "Debug" },
+      { "<leader>e", group = "Explorer" },
       { "<leader>f", group = "Find (Telescope)" },
       { "<leader>r", group = "Rename" },
       { "<leader>s", group = "Split/Save" },

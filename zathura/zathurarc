@@ -21,7 +21,7 @@ set recolor-lightcolor "rgba(15, 17, 26, 0)"
 set recolor-darkcolor "#e0e0e0"
 
 # Match the Zathura window background to the same transparency
-set default-bg "rgba(15, 17, 26, 0.70)"
+set default-bg "rgba(15, 17, 26, 0.80)"
 
 # Status bar (Matching transparent background)
 set statusbar-bg "rgba(15, 17, 26, 0)"

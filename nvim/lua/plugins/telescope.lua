@@ -26,7 +26,7 @@ return {
       defaults = {
         prompt_prefix = "  ",
         selection_caret = "  ",
-        path_display = { "smart" },
+        path_display = { "truncate" },
 
         -- Keeps Telescope fast by ignoring build directories and object files
         file_ignore_patterns = {

@@ -41,6 +41,11 @@ return {
         NonText = { bg = "none" },
         SignColumn = { bg = "none" },
         EndOfBuffer = { bg = "none" },
+        
+        -- Fix for mini.files: give it a solid background so text doesn't overlap
+        MiniFilesNormal = { bg = colors.mantle },
+        MiniFilesBorder = { bg = colors.mantle, fg = colors.surface2 },
+        MiniFilesTitle = { bg = colors.mantle, fg = colors.lavender, bold = true },
       }
     end,
   },

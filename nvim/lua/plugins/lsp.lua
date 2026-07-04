@@ -118,7 +118,9 @@ return {
     --
     -- Add any additional override configuration in the following tables.
     local servers = {
-      clangd = {},
+      clangd = {
+        cmd = { 'clangd', '--function-arg-placeholders=0' },
+      },
       ruff = {},
       pyright = {}, -- Using pyright for types, ruff for linting (much faster than pylsp)
       html = { filetypes = { 'html', 'twig', 'hbs' } },
@@ -126,7 +128,7 @@ return {
       lua_ls = {
         settings = {
           Lua = {
-            completion = { callSnippet = 'Replace' },
+            completion = { callSnippet = 'Disable' },
             diagnostics = { globals = { 'vim' }, disable = { 'missing-fields' } },
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
@@ -140,6 +142,7 @@ return {
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
+      'codelldb', -- DAP adapter for C/C++/Rust debugging
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

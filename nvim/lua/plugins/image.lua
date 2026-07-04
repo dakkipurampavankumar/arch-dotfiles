@@ -1,8 +1,9 @@
 return {
     "3rd/image.nvim",
-    ft = { "markdown", "norg", "org" },
+    -- Load eagerly so it's available for alpha dashboard image
+    lazy = false,
     opts = {
-        backend = "kitty", -- or "ueberzug" if you don't use Kitty/Wezterm
+        backend = "kitty",
         max_width = 100,
         max_height = 12,
         max_width_window_percentage = 80,
