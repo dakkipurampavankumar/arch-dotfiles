@@ -3,7 +3,7 @@ return {
     -- Load eagerly so it's available for alpha dashboard image
     lazy = false,
     opts = {
-        backend = "kitty",
+        backend = "sixel",
         max_width = 100,
         max_height = 12,
         max_width_window_percentage = 80,

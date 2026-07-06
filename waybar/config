@@ -42,7 +42,7 @@
     "memory": {
         "interval": 2,
         "format": " {}%",
-	"on-click": "kitty -e htop"
+	"on-click": "footclient -e htop"
     },
     "battery": {
         // EFFICIENT: Updates every 30 seconds
@@ -63,7 +63,7 @@
         "format-ethernet": "  Connected",
         "format-disconnected": "⚠ Disconnected",
         "tooltip-format": "{ifname} via {gwaddr} ",
-	"on-click": "kitty -e nmtui"
+	"on-click": "footclient -e nmtui"
     },
     "tray": {
         "spacing": 10
@@ -82,7 +82,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "kitty -e pulsemixer"
+        "on-click": "footclient -e pulsemixer"
     },
 
     "bluetooth": {
@@ -93,7 +93,7 @@
         "tooltip-format": "{device_battery_percentage}%",
         "tooltip-format-connected": "{device_battery_percentage}%",
         "tooltip-format-enumerate-connected": "{device_battery_percentage}%",
-        "on-click": "kitty -e bluetoothctl"
+        "on-click": "footclient -e bluetoothctl"
     },
     
     "sway/scratchpad": {
@@ -132,7 +132,7 @@
         "path": "/home/pavan/Pictures/photo.png",
         "size": 24,
         "interval": "once",
-        "on-click": "kitty"
+        "on-click": "footclient"
     }
 }
 

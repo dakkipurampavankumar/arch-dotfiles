@@ -1,12 +1,12 @@
 [opener]
 edit = [
-    { run = 'kitty -e nvim "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Neovim", for = "unix" }
+    { run = 'footclient -e nvim "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Neovim", for = "unix" }
 ]
 zathura = [
     { run = 'zathura "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open with Zathura", for = "unix" }
 ]
 terminal = [
-    { run = 'kitty --working-directory "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open terminal here", for = "unix" }
+    { run = 'footclient -D "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open terminal here", for = "unix" }
 ]
 mpv = [
     { run = 'mpv "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open with mpv", for = "unix" }
@@ -14,7 +14,7 @@ mpv = [
 
 [open]
 prepend_rules = [
-    # Pressing Enter on a folder opens kitty in that path
+    # Pressing Enter on a folder opens footclient in that path
     { mime = "inode/directory", use = "terminal" },
     # Fallback directory match just in case the MIME check fails
     { url = "*/", use = "terminal" },

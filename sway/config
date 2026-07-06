@@ -6,7 +6,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
+set $term footclient
 set $menu fuzzel
 
 # Display Output
@@ -23,6 +23,5 @@ include ~/.config/sway/config.d/*.conf
 
 exec_always autotiling
 
-# Clipboard Manager: Start cliphist and listen to Wayland clipboard
-exec wl-paste --type text --watch cliphist store
-exec wl-paste --type image --watch cliphist store
+exec foot --server
+exec foot --server

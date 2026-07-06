@@ -1,6 +1,6 @@
 [mgr]
 prepend_keymap = [
-    { on = "E", run = 'shell "kitty -e nvim \"$1\"" --confirm --orphan', desc = "Open Neovim in a new window" }
+    { on = "E", run = 'shell "footclient -e nvim \"$1\"" --confirm --orphan', desc = "Open Neovim in a new window" }
 ]
 
 [manager]

@@ -9,11 +9,11 @@ if [ "$1" == "file" ]; then
 
     if [ -d "$target" ]; then
         # Spawns Yazi in the selected directory using your floating window rules
-        swaymsg exec "kitty --class yazi-float --working-directory '$target' -e yazi"
+        swaymsg exec "footclient --app-id yazi-float -D '$target' -e yazi"
     else
         mime=$(file -b --mime-type "$target")
         if [[ "$mime" == text/* ]] || [[ "$mime" == application/json ]] || [[ "$mime" == inode/x-empty ]]; then
-            swaymsg exec "kitty -e nvim '$target'"
+            swaymsg exec "footclient -e nvim '$target'"
         elif [[ "$mime" == "application/pdf" ]]; then
             # Catch PDFs explicitly and open them with Zathura
             swaymsg exec "zathura '$target'"
@@ -40,5 +40,5 @@ elif [ "$1" == "content" ]; then
     line=$(echo "$target_line" | awk -F: '{print $2}')
     
     # Hand off to Sway to spawn Neovim at the exact line
-    swaymsg exec "kitty -e nvim '+$line' '$file'"
+    swaymsg exec "footclient -e nvim '+$line' '$file'"
 fi
