@@ -33,7 +33,9 @@ return {
     custom_highlights = function(colors)
       return {
         NormalFloat = { bg = "none" },
-        FloatBorder = { bg = "none" },
+        FloatBorder = { bg = "none", fg = colors.lavender },
+        CmpBorder = { bg = "none", fg = colors.lavender },
+        CmpDocBorder = { bg = "none", fg = colors.lavender },
         NormalNC = { bg = "none" },
         VertSplit = { bg = "none" },
         WinSeparator = { bg = "none" },
