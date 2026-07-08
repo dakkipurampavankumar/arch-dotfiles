@@ -1,7 +1,8 @@
 return {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true
-    -- use opts = {} for passing setup options
-    -- this is equivalent to setup({}) function
+  'windwp/nvim-autopairs',
+  event = "InsertEnter",
+  opts = {
+    check_ts = true, -- Use Treesitter to skip pairing inside comments/strings
+    fast_wrap = {},   -- Enable <Alt-e> to wrap existing words with brackets
+  },
 }

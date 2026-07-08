@@ -89,6 +89,10 @@ return {
           ghost_text = true,
         },
       }
+
+      -- Wire autopairs into cmp: auto-insert () after selecting a function
+      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
 }
