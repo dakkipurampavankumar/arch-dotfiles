@@ -8,7 +8,7 @@
 
 /* 1. Active State: Your custom rgba Neovim-matched background */
 window#waybar {
-    background-color: rgba(15, 17, 26, 0.80);
+    background-color: rgba(0, 0, 0, 1);
     /* Tokyo Night Foreground - Crisp but easy on the eyes */
     color: #A9B1D6; 
     text-shadow: none;
@@ -74,7 +74,7 @@ window#waybar.empty #window {
    MODULE COLORS (Minimalist Monochromatic)
 ========================================= */
 /* Base Color for ALL modules */
-#clock, #battery, #network, #cpu, #memory, #pulseaudio, #bluetooth, #temperature {
+#clock, #battery, #network, #pulseaudio, #bluetooth{
     color: #C0CAF5; 
 }
 
@@ -101,12 +101,6 @@ window#waybar.empty #window {
 #bluetooth.disabled {
     color: #565F89; /* Dim grey when off */
 }
-
-#cpu.critical, #temperature.critical {
-    color: #F7768E; /* Red on high load/temp */
-    animation: blink 2s steps(1) infinite;
-}
-
 
 /* =========================================
    CUSTOM MODULES

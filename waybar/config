@@ -6,7 +6,7 @@
     // Choose what you want to see
     "modules-left": ["image#logo", "clock", "sway/scratchpad", "sway/window"], 
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["network","bluetooth","pulseaudio","cpu", "memory","custom/nightlight", "battery","tray"],
+    "modules-right": ["network","bluetooth","pulseaudio","custom/nightlight", "battery","tray"],
 
     // -- MODULE SETTINGS --
 
@@ -34,16 +34,6 @@
         "format": "{:%I:%M %p}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
-    "cpu": {
-        // EFFICIENT: Updates every 10 seconds
-        "interval": 2,
-        "format": " {usage}%"
-    },
-    "memory": {
-        "interval": 2,
-        "format": " {}%",
-	"on-click": "footclient -e htop"
-    },
     "battery": {
         // EFFICIENT: Updates every 30 seconds
         "interval": 60,
@@ -63,7 +53,7 @@
         "format-ethernet": "  Connected",
         "format-disconnected": "⚠ Disconnected",
         "tooltip-format": "{ifname} via {gwaddr} ",
-	"on-click": "footclient -e nmtui"
+        "on-click": "footclient -e nmtui"
     },
     "tray": {
         "spacing": 10
@@ -102,17 +92,6 @@
     "format-icons": ["", ""],
     "tooltip": true,
     "tooltip-format": "{app}: {title}"
-    },
-
-    "temperature": {
-    // Points directly to the Ryzen CPU thermal sensor
-    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
-    "interval" : 5,
-    "critical-threshold": 80,
-    "format": "{icon} {temperatureC}°C",
-    "format-icons": ["", "", ""],
-    "tooltip": true,
-    "tooltip-format": "CPU Temperature"
     },
 
     "custom/nightlight": {

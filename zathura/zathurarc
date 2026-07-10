@@ -15,16 +15,16 @@ set scroll-step 50
 # ---------------------------------------------------------
 
 # The background color of the PDF pages (85% Opacity)
-set recolor-lightcolor "rgba(15, 17, 26, 0)"
+#set recolor-lightcolor "rgba(15, 17, 26, 0)"
 
 # The text/foreground color of the PDF (Soft matte off-white)
-set recolor-darkcolor "#e0e0e0"
+#set recolor-darkcolor "#e0e0e0"
 
 # Match the Zathura window background to the same transparency
-set default-bg "rgba(15, 17, 26, 0.80)"
+#set default-bg "rgba(15, 17, 26, 0.80)"
 
 # Status bar (Matching transparent background)
-set statusbar-bg "rgba(15, 17, 26, 0)"
+#set statusbar-bg "rgba(15, 17, 26, 0)"
 
 # Electric cyan accent for the status bar text
-set statusbar-fg "#e0e0e0"
+#set statusbar-fg "#e0e0e0"

@@ -10,7 +10,8 @@ set $term footclient
 set $menu fuzzel
 
 # Display Output
-output * bg /home/pavan/Pictures/anime-girl-2.png fill 
+output * bg #000000 solid_color  
+#output * bg /home/pavan/Pictures/anime-girl-2.png fill
 
 # System Default Includes
 include /etc/sway/config.d/*
