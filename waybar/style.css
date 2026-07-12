@@ -20,22 +20,11 @@ window#waybar.empty {
     background-color: transparent;
 }
 
-/* The Magic Fix: Lift the text off the anime wallpaper without being harsh */
-window#waybar.empty * {
-    /*text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);*/
-}
-
 /* Base styling for all modules */
 #mpd, #workspaces, #window, #clock, #battery, #cpu, #memory, #network, #tray, #pulseaudio, #bluetooth, #scratchpad, #temperature, #custom-nightlight {
     padding: 0 12px;
     margin: 4px 2px;
-    border-radius: 14px; /* Perfectly rounded pill shape */
     background-color: rgba(92, 99, 112, 0.35); 
-}
-
-/* 3. Empty State Module Shield */
-window#waybar.empty #image.logo,#mpd, window#waybar.empty #workspaces, window#waybar.empty #clock, window#waybar.empty #battery, window#waybar.empty #cpu, window#waybar.empty #memory, window#waybar.empty #network, window#waybar.empty #tray, window#waybar.empty #pulseaudio, window#waybar.empty #bluetooth, window#waybar.empty #scratchpad, window#waybar.empty #temperature, window#waybar.empty #custom-nightlight {
-    background-color: rgba(25, 28, 38, 0.65);
 }
 
 /* =========================================
@@ -49,7 +38,7 @@ window#waybar.empty #image.logo,#mpd, window#waybar.empty #workspaces, window#wa
 
 #workspaces button.focused {
     /* Rich Tokyo Night Blue: Pops without being harsh */
-    color: #7AA2F7; 
+    color: #A9B1D6; 
     background-color: rgba(122, 162, 247, 0.15); 
 }
 
@@ -122,7 +111,6 @@ window#waybar.empty #window {
 #image.logo {
     padding: 0 12px;
     margin: 4px 10px;
-    border-radius: 14px;
     background-color: rgba(92, 99, 112, 0.35); 
     transition: background-color 0.3s ease;
 }

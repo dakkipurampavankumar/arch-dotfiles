@@ -25,4 +25,3 @@ include ~/.config/sway/config.d/*.conf
 exec_always autotiling
 
 exec foot --server
-exec foot --server
