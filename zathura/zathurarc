@@ -11,20 +11,41 @@ set recolor-keephue "true"
 set scroll-step 50
 
 # ---------------------------------------------------------
-# TRANSPARENCY & THEMING (Midnight Blue with Alpha)
+# CATPPUCCIN MACCHIATO THEME (With Transparency)
 # ---------------------------------------------------------
 
-# The background color of the PDF pages (85% Opacity)
-#set recolor-lightcolor "rgba(15, 17, 26, 0)"
+# The background color of the PDF pages (Fully transparent to let window bg show)
+set recolor-lightcolor "rgba(36, 39, 58, 0)"
 
-# The text/foreground color of the PDF (Soft matte off-white)
-#set recolor-darkcolor "#e0e0e0"
+# The text/foreground color of the PDF (Macchiato Text - Soft off-white)
+set recolor-darkcolor "#cad3f5"
 
-# Match the Zathura window background to the same transparency
-#set default-bg "rgba(15, 17, 26, 0.80)"
+# Match the Zathura window background to Macchiato Base with 85% opacity
+set default-bg "rgba(36, 39, 58, 0.85)"
+set default-fg "#cad3f5"
 
 # Status bar (Matching transparent background)
-#set statusbar-bg "rgba(15, 17, 26, 0)"
+set statusbar-bg "rgba(36, 39, 58, 0.85)"
+set statusbar-fg "#cad3f5"
 
-# Electric cyan accent for the status bar text
-#set statusbar-fg "#e0e0e0"
+# Input bar (Macchiato Surface0 for slight contrast when typing commands)
+set inputbar-bg "#363a4f" 
+set inputbar-fg "#cad3f5"
+
+# Notifications
+set notification-bg "#363a4f"
+set notification-fg "#cad3f5"
+set notification-error-bg "#363a4f"
+set notification-error-fg "#ed8796" # Macchiato Red
+set notification-warning-bg "#363a4f"
+set notification-warning-fg "#eed49f" # Macchiato Yellow
+
+# Highlight colors for search/selection (Macchiato Peach and Red)
+set highlight-color "#f5a97f"
+set highlight-active-color "#ed8796"
+
+# Command completion menu
+set completion-bg "#24273a"
+set completion-fg "#a5adcb" # Subtext0 for inactive completion items
+set completion-highlight-bg "#363a4f"
+set completion-highlight-fg "#cad3f5"

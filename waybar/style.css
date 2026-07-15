@@ -6,45 +6,44 @@
     border-radius: 0;
 }
 
-/* 1. Active State: Your custom rgba Neovim-matched background */
+/* 1. Active State: Catppuccin Macchiato Base background */
 window#waybar {
-    background-color: rgba(0, 0, 0, 1);
-    /* Tokyo Night Foreground - Crisp but easy on the eyes */
-    color: #A9B1D6; 
+    background-color: rgba(36, 39, 58, 1); /* Macchiato Base */
+    /* Macchiato Text - Crisp but easy on the eyes */
+    color: #cad3f5; 
     text-shadow: none;
     transition-property: background-color;
 }
 
-/* 2. Empty State: Fully transparent when viewing just the wallpaper */
 window#waybar.empty {
     background-color: transparent;
 }
 
 /* Base styling for all modules */
-#mpd, #workspaces, #window, #clock, #battery, #cpu, #memory, #network, #tray, #pulseaudio, #bluetooth, #scratchpad, #temperature, #custom-nightlight {
+#workspaces, #window, #clock, #battery, #network, #tray, #pulseaudio, #bluetooth, #scratchpad, #custom-nightlight {
     padding: 0 12px;
     margin: 4px 2px;
-    background-color: rgba(92, 99, 112, 0.35); 
+    background-color: rgba(73, 77, 100, 0.35); /* Macchiato Surface1 with opacity */
 }
 
 /* =========================================
    WORKSPACES
 ========================================= */
 #workspaces button {
-    /* Muted Blue-Grey: Distinctly inactive but legible */
-    color: #565F89; 
+    /* Macchiato Overlay0: Distinctly inactive but legible */
+    color: #6e738d; 
     padding: 0 6px;
 }
 
 #workspaces button.focused {
-    /* Rich Tokyo Night Blue: Pops without being harsh */
-    color: #A9B1D6; 
-    background-color: rgba(122, 162, 247, 0.15); 
+    /* Macchiato Lavender: Pops without being harsh */
+    color: #b7bdf8; 
+    background-color: rgba(183, 189, 248, 0.15); /* Lavender with opacity */
 }
 
 #workspaces button.urgent {
-    /* Soft Coral Red */
-    color: #F7768E; 
+    /* Macchiato Red */
+    color: #ed8796; 
 }
 
 /* =========================================
@@ -63,45 +62,45 @@ window#waybar.empty #window {
    MODULE COLORS (Minimalist Monochromatic)
 ========================================= */
 /* Base Color for ALL modules */
-#clock, #battery, #network, #pulseaudio, #bluetooth{
-    color: #C0CAF5; 
+#clock, #battery, #network, #pulseaudio, #bluetooth {
+    color: #cad3f5; /* Macchiato Text */
 }
 
 /* -----------------------------------------
    STATE-BASED WARNINGS (Color appears only on change)
 ----------------------------------------- */
 #battery.warning {
-    color: #E0AF68; /* Orange */
+    color: #f5a97f; /* Macchiato Peach (Orange) */
 }
 
 #battery.critical {
-    color: #F7768E; /* Red */
+    color: #ed8796; /* Macchiato Red */
     animation: blink 2s steps(1) infinite;
 }
 
 #network.disconnected {
-    color: #F7768E; /* Red when no internet */
+    color: #ed8796; /* Macchiato Red when no internet */
 }
 
 #pulseaudio.muted {
-    color: #565F89; /* Dim grey when muted */
+    color: #6e738d; /* Macchiato Overlay0 when muted */
 }
 
 #bluetooth.disabled {
-    color: #565F89; /* Dim grey when off */
+    color: #6e738d; /* Macchiato Overlay0 when off */
 }
 
 /* =========================================
    CUSTOM MODULES
 ========================================= */
 #custom-nightlight.on {
-    /* Warm Gold/Yellow */
-    color: #E0AF68; 
+    /* Macchiato Yellow */
+    color: #eed49f; 
 }
 
 #custom-nightlight.off {
-    /* Muted Blue-Grey */
-    color: #565F89; 
+    /* Macchiato Overlay0 */
+    color: #6e738d; 
 }
 
 @keyframes blink {
@@ -111,7 +110,21 @@ window#waybar.empty #window {
 #image.logo {
     padding: 0 12px;
     margin: 4px 10px;
-    background-color: rgba(92, 99, 112, 0.35); 
+    background-color: rgba(73, 77, 100, 0.35); /* Macchiato Surface1 with opacity */
     transition: background-color 0.3s ease;
 }
 
+/* Give modules a more solid background when the workspace is empty */
+window#waybar.empty #workspaces, 
+window#waybar.empty #window, 
+window#waybar.empty #clock, 
+window#waybar.empty #battery, 
+window#waybar.empty #network, 
+window#waybar.empty #tray, 
+window#waybar.empty #pulseaudio, 
+window#waybar.empty #bluetooth, 
+window#waybar.empty #scratchpad, 
+window#waybar.empty #custom-nightlight 
+window#wayabr.empty #image.logo {
+    background-color: rgba(36, 39, 58, 0.75); /* Macchiato Base with 90% opacity */
+}
