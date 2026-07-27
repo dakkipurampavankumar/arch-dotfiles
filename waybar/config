@@ -13,16 +13,7 @@
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "1": "", // Terminal
-            "2": "", // Browser
-            "3": "", // Code
-            "4": "", // Media/Music
-            "urgent": "",
-            "focused": "",
-            "default": ""
-        }
+        "format": "{name}"
     },
     "sway/window": {
         "show-empty" : false,
@@ -60,7 +51,7 @@
     },
 
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
+        "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}%",
         "format-muted": " Muted ",
         "format-icons": {

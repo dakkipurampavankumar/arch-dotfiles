@@ -32,7 +32,7 @@ window#waybar.empty {
 #workspaces button {
     /* Macchiato Overlay0: Distinctly inactive but legible */
     color: #6e738d; 
-    padding: 0 6px;
+    padding: 0 4px;
 }
 
 #workspaces button.focused {

@@ -21,11 +21,11 @@ set recolor-lightcolor "rgba(36, 39, 58, 0)"
 set recolor-darkcolor "#cad3f5"
 
 # Match the Zathura window background to Macchiato Base with 85% opacity
-set default-bg "rgba(36, 39, 58, 0.85)"
+set default-bg "rgba(36, 39, 58, 1)"
 set default-fg "#cad3f5"
 
 # Status bar (Matching transparent background)
-set statusbar-bg "rgba(36, 39, 58, 0.85)"
+set statusbar-bg "rgba(36, 39, 58, 1)"
 set statusbar-fg "#cad3f5"
 
 # Input bar (Macchiato Surface0 for slight contrast when typing commands)
