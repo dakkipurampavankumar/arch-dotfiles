@@ -20,6 +20,7 @@ return { -- Highlight, edit, and navigate code
       'bash',
       'css',
       'html',
+      'java',
     },
     auto_install = true,
     highlight = { enable = true },

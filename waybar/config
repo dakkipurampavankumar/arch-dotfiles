@@ -4,9 +4,9 @@
     "height": 20,
     "spacing": 4,
     // Choose what you want to see
-    "modules-left": ["image#logo", "clock", "sway/scratchpad", "sway/window"], 
+    "modules-left": ["custom/profile", "clock", "sway/scratchpad", "sway/window"], 
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["network","bluetooth","pulseaudio","custom/nightlight", "battery","tray"],
+    "modules-right": ["network", "bluetooth", "pulseaudio", "battery", "tray"],
 
     // -- MODULE SETTINGS --
 
@@ -41,9 +41,9 @@
         // EFFICIENT: Updates every 10 seconds
         "interval": 10,
         "format-wifi": "  {essid}",
-        "format-ethernet": "  Connected",
+        "format-ethernet": "Connected",
         "format-disconnected": "⚠ Disconnected",
-        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format": "{ifname} via {gwaddr}",
         "on-click": "footclient -e nmtui"
     },
     "tray": {
@@ -53,7 +53,7 @@
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}%",
-        "format-muted": " Muted ",
+        "format-muted": "Muted ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -78,31 +78,15 @@
     },
     
     "sway/scratchpad": {
-    "format": "{icon} {count}",
+    "format": " {icon}{count}",
     "show-empty": true,
-    "format-icons": ["", ""],
+    "format-icons": ["", ""],
     "tooltip": true,
     "tooltip-format": "{app}: {title}"
     },
-
-    "custom/nightlight": {
-    "format": "{icon}",
-    "return-type": "json",
-    "format-icons": {
-        "on": "",  // Moon icon (requires FontAwesome)
-        "off": ""  // Sun icon (requires FontAwesome)
-    },
-    "exec": "~/.config/waybar/scripts/nightlight.sh status",
-    "on-click": "~/.config/waybar/scripts/nightlight.sh toggle",
-    "interval": "once",
-    "signal": 12
-    },
-
-    "image#logo": {
-        "path": "/home/pavan/Pictures/photo.png",
-        "size": 24,
-        "interval": "once",
-        "on-click": "footclient"
+    
+    "custom/profile": {
+        "format": " ",
+        "tooltip": false
     }
 }
-

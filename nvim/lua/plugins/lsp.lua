@@ -121,6 +121,7 @@ return {
       clangd = {
         cmd = { 'clangd', '--function-arg-placeholders=0' },
       },
+      jdtls = {}, -- Added Java Language Server
       ruff = {},
       pyright = {}, -- Using pyright for types, ruff for linting (much faster than pylsp)
       html = { filetypes = { 'html', 'twig', 'hbs' } },
@@ -143,6 +144,11 @@ return {
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
       'codelldb', -- DAP adapter for C/C++/Rust debugging
+      'isort', -- Python formatter
+      'black', -- Python formatter
+      'prettier', -- JS/TS/HTML/CSS/Markdown formatter
+      'clang-format', -- C/C++ formatter
+      'google-java-format', -- Java formatter
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

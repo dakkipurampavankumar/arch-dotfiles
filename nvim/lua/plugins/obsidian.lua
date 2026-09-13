@@ -4,45 +4,62 @@ return {
   lazy = true,
   ft = "markdown", 
   
-  -- Add this section: 
-  -- Lazy will intercept these commands and load the plugin on-the-fly
-  cmd = {
-    "ObsidianOpen",
-    "ObsidianNew",
-    "ObsidianQuickSwitch",
-    "ObsidianToday",
-    "ObsidianSearch",
-  },
-  
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MeanderingProgrammer/render-markdown.nvim",
   },
+  
+  keys = {
+    -- Custom wrapper: runs ObsidianNew, then after a short delay forces 
+    -- render-markdown to re-process the newly created buffer
+    { "<leader>on", function()
+        vim.cmd("ObsidianNew")
+        -- Wait 500ms for Obsidian to finish creating file + writing frontmatter
+        vim.defer_fn(function()
+          local buf = vim.api.nvim_get_current_buf()
+          -- Save the file first so render-markdown treats it as a real file
+          pcall(vim.cmd, "silent! write")
+          -- Force filetype re-detection (this triggers render-markdown to attach fresh)
+          vim.bo[buf].filetype = ""
+          vim.bo[buf].filetype = "markdown"
+        end, 500)
+      end, desc = "New Obsidian Note" },
+    { "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", desc = "Quick Switch Note" },
+    { "<leader>os", "<cmd>ObsidianSearch<CR>", desc = "Search in Vault" },
+    { "<leader>ob", "<cmd>ObsidianBacklinks<CR>", desc = "Show Note Backlinks" },
+  },
+
   opts = {
     workspaces = {
       {
-        name = "personal",
-        path = "~/vaults/personal", -- Ensure this directory actually exists on your system!
+        name = "main",
+        path = "~/vaults", 
       },
     },
     ui = {
-      enable = false, -- Disable obsidian's UI so render-markdown can handle everything consistently
+      enable = false, 
     },
+    
+    note_id_func = function(title)
+      if title ~= nil then
+        return title
+      else
+        return tostring(os.time())
+      end
+    end,
+
+    note_frontmatter_func = function(note)
+      local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+        for k, v in pairs(note.metadata) do
+          out[k] = v
+        end
+      end
+      return out
+    end,
   },
+  
   config = function(_, opts)
     require("obsidian").setup(opts)
-
-    -- Safety net: ensure treesitter starts for markdown after obsidian loads
-    vim.api.nvim_create_autocmd("BufReadPost", {
-      pattern = "*.md",
-      callback = function(ev)
-        vim.schedule(function()
-          -- Only force-start treesitter if it didn't auto-start
-          if not vim.treesitter.highlighter.active[ev.buf] then
-            pcall(vim.treesitter.start, ev.buf, "markdown")
-          end
-        end)
-      end,
-    })
   end,
 }

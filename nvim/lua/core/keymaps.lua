@@ -40,7 +40,8 @@ vim.keymap.set('n', '<Right>', ':vertical resize +2<CR>', opts)
 -- Buffers
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
-vim.keymap.set('n', '<leader>x', ':bdelete!<CR>', opts) -- close buffer
+-- Changed bdelete to Bdelete (from vim-bbye) to prevent split windows from collapsing
+vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts) -- close buffer
 vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
 
 -- Window management
@@ -101,30 +102,34 @@ vim.keymap.set('n', '<F5>', function()
     javascript = cd_cmd .. 'node ' .. file,
     sh = cd_cmd .. 'bash ' .. file,
     go = cd_cmd .. 'go run ' .. file,
-    c = cd_cmd .. 'gcc ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
-    cpp = cd_cmd .. 'g++ ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
+    c = cd_cmd .. 'gcc -g -Wall -Wextra ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
+    cpp = cd_cmd .. 'g++ -g -Wall -Wextra ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
+    java = cd_cmd .. 'javac ' .. file .. ' && java ' .. vim.fn.expand('%:t:r'),
   }
 
   -- 4. Smart handling for Rust
   if filetype == 'rust' then
-    -- Searches upwards from the current file's directory for Cargo.toml
     local is_cargo = vim.fn.findfile('Cargo.toml', file_dir .. ';')
-    
     if is_cargo ~= '' then
-      -- If Cargo.toml is found, tell cargo exactly where it is located
       commands.rust = 'cargo run --manifest-path ' .. is_cargo
     else
-      -- Fallback for standalone .rs files
       commands.rust = cd_cmd .. 'rustc ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file
     end
   end
 
-  -- 5. Execute the command
+  -- 5. Execute using toggleterm Terminal #2 (keeps Terminal #1 free for general use)
   local cmd = commands[filetype]
 
   if cmd then
-    vim.cmd('botright 12split | term ' .. cmd)
-    vim.cmd('startinsert')
+    local Terminal = require('toggleterm.terminal').Terminal
+    local run_term = Terminal:new({
+      cmd = cmd,
+      count = 2,
+      direction = 'horizontal',
+      size = 15,
+      close_on_exit = false, -- Keep output visible after program finishes
+    })
+    run_term:toggle()
   else
     print('No F5 run command configured for filetype: ' .. filetype)
   end

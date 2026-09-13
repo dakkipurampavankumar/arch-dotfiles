@@ -56,14 +56,35 @@ return {
       },
     }
 
+    local compile_and_run = function()
+      -- 1. Save the file before debugging
+      vim.cmd('silent! write')
+
+      local file = vim.fn.expand('%:p')
+      local exec = vim.fn.expand('%:p:r')
+      local ext = vim.fn.expand('%:e')
+      
+      local compiler = (ext == 'cpp' or ext == 'cc' or ext == 'cxx') and 'g++' or 'gcc'
+      
+      vim.notify("Compiling " .. vim.fn.expand('%:t') .. "...", vim.log.levels.INFO)
+      
+      -- 2. Compile with the same flags as your F5 keybind
+      local out = vim.fn.system({compiler, '-g', '-Wall', '-Wextra', file, '-o', exec})
+      
+      if vim.v.shell_error ~= 0 then
+        vim.notify("Compilation failed:\n" .. out, vim.log.levels.ERROR)
+        return nil -- Abort debugging
+      end
+      
+      return exec
+    end
+
     dap.configurations.c = {
       {
-        name = 'Launch (C)',
+        name = 'Compile & Launch',
         type = 'codelldb',
         request = 'launch',
-        program = function()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
+        program = compile_and_run,
         cwd = '${workspaceFolder}',
         stopOnEntry = false,
       },

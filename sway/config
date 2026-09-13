@@ -9,10 +9,6 @@ set $right l
 set $term footclient
 set $menu fuzzel
 
-# Display Output
-#output * bg #24273a solid_color  
-output * bg /home/pavan/Pictures/anime-girl-16.png fill
-
 # System Default Includes
 include /etc/sway/config.d/*
 
@@ -22,6 +18,7 @@ include ~/.config/sway/config.d/*.conf
 #autostart valent service 
 #exec valent --gapplication-service
 
-exec_always autotiling
+exec autotiling
+xwayland disable
 
 exec foot --server

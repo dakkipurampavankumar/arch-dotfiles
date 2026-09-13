@@ -45,3 +45,6 @@ vim.opt.runtimepath:remove '/usr/share/vim/vimfiles' -- Separate Vim plugins fro
 -- Display dots for indentation alignment
 vim.opt.list = true
 vim.opt.listchars = { leadmultispace = '·   ' }
+
+-- Disable cursor blinking in Neovim (including the integrated terminal)
+vim.opt.guicursor:append("a:blinkon0")

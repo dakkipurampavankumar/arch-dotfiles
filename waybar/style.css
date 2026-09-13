@@ -20,7 +20,7 @@ window#waybar.empty {
 }
 
 /* Base styling for all modules */
-#workspaces, #window, #clock, #battery, #network, #tray, #pulseaudio, #bluetooth, #scratchpad, #custom-nightlight {
+#custom-profile, #workspaces, #window, #clock, #battery, #network, #tray, #pulseaudio, #bluetooth, #scratchpad{
     padding: 0 12px;
     margin: 4px 2px;
     background-color: rgba(73, 77, 100, 0.35); /* Macchiato Surface1 with opacity */
@@ -90,31 +90,12 @@ window#waybar.empty #window {
     color: #6e738d; /* Macchiato Overlay0 when off */
 }
 
-/* =========================================
-   CUSTOM MODULES
-========================================= */
-#custom-nightlight.on {
-    /* Macchiato Yellow */
-    color: #eed49f; 
-}
-
-#custom-nightlight.off {
-    /* Macchiato Overlay0 */
-    color: #6e738d; 
-}
-
 @keyframes blink {
     50% { color: transparent; text-shadow: none; }
 }
 
-#image.logo {
-    padding: 0 12px;
-    margin: 4px 10px;
-    background-color: rgba(73, 77, 100, 0.35); /* Macchiato Surface1 with opacity */
-    transition: background-color 0.3s ease;
-}
-
 /* Give modules a more solid background when the workspace is empty */
+window#waybar.empty #custom-profile, 
 window#waybar.empty #workspaces, 
 window#waybar.empty #window, 
 window#waybar.empty #clock, 
@@ -123,8 +104,16 @@ window#waybar.empty #network,
 window#waybar.empty #tray, 
 window#waybar.empty #pulseaudio, 
 window#waybar.empty #bluetooth, 
-window#waybar.empty #scratchpad, 
-window#waybar.empty #custom-nightlight 
-window#wayabr.empty #image.logo {
+window#waybar.empty #scratchpad {
     background-color: rgba(36, 39, 58, 0.75); /* Macchiato Base with 90% opacity */
+}
+
+#custom-profile {
+    background-image: url("/home/pavan/Pictures/Maahishmathi.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-left: 14px;
+    padding-right: 14px;
+    border-radius: 4px;
 }

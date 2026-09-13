@@ -11,7 +11,6 @@ return {
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
-    -- The fzf-native extension and its build command
     { 
       "nvim-telescope/telescope-fzf-native.nvim", 
       build = "make" 
@@ -20,22 +19,19 @@ return {
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
-    local builtin = require("telescope.builtin")
 
     telescope.setup({
       defaults = {
-        prompt_prefix = "  ",
-        selection_caret = "  ",
+        prompt_prefix = "   ",
+        selection_caret = " ❯ ",
         path_display = { "truncate" },
 
-        -- Keeps Telescope fast by ignoring build directories and object files
+        -- These are a safety net. The real speed comes from fd flags below.
         file_ignore_patterns = {
-          ".git/",
-          "build/",
-          "target/",
+          "%.git/",
           "node_modules/",
-          "%.o", 
-          "%.out"
+          "%.o$",
+          "%.out$",
         },
 
         mappings = {
@@ -52,7 +48,42 @@ return {
       },
       pickers = {
         find_files = {
-          hidden = true,
+          -- Instead of letting Telescope use its default finder and then filtering
+          -- 125,000 results in Lua (slow!), we tell it to use `fd` directly.
+          -- fd skips excluded folders at the filesystem level so they are never even read.
+          find_command = {
+            "fd",
+            "--type", "f",
+            "--hidden",        -- show dotfiles like .bashrc
+            "--follow",        -- follow symlinks (fixes ~/vaults -> /mnt/HDD/vaults)
+            "--exclude", ".git",
+            "--exclude", "node_modules",
+            "--exclude", "build",
+            "--exclude", "target",
+            -- Heavy hidden folders that were causing the 1-second freeze:
+            "--exclude", ".cargo",
+            "--exclude", ".rustup",
+            "--exclude", ".npm",
+            "--exclude", ".cache",
+            "--exclude", ".local",
+            "--exclude", ".android",
+            "--exclude", ".gnupg",
+          },
+        },
+        live_grep = {
+          additional_args = function()
+            return {
+              "--follow",       -- follow symlinks
+              "--hidden",       -- search inside dotfiles
+              "--glob", "!.git/",
+              "--glob", "!.cargo/",
+              "--glob", "!.rustup/",
+              "--glob", "!.npm/",
+              "--glob", "!.cache/",
+              "--glob", "!.local/",
+              "--glob", "!node_modules/",
+            }
+          end,
         },
         buffers = {
           initial_mode = "normal",
@@ -62,18 +93,16 @@ return {
           },
         },
       },
-      -- Configure the fzf extension
       extensions = {
         fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = true,  -- override the generic sorter
-          override_file_sorter = true,     -- override the file sorter
-          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
         }
       }
     })
 
-    -- You must explicitly load the extension after setting it up
     telescope.load_extension("fzf")
   end
 }

@@ -1,15 +1,15 @@
 [opener]
 edit = [
-    { run = 'footclient -e nvim "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Neovim", for = "unix" }
+    { run = 'footclient -e nvim %s & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Neovim", for = "unix" }
 ]
 zathura = [
-    { run = 'zathura "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open with Zathura", for = "unix" }
+    { run = 'zathura %s1 & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open with Zathura", for = "unix" }
 ]
 terminal = [
-    { run = 'footclient -D "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open terminal here", for = "unix" }
+    { run = 'footclient -D %s1 & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open terminal here", for = "unix" }
 ]
 mpv = [
-    { run = 'mpv "$@" & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open with mpv", for = "unix" }
+    { run = 'mpv %s & swaymsg "[app_id=yazi-float] kill"', orphan = true, desc = "Open with mpv", for = "unix" }
 ]
 
 [open]
