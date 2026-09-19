@@ -26,24 +26,29 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
-        // EFFICIENT: Updates every 30 seconds
-        "interval": 60,
+        "interval": 10,
         "states": {
             "warning": 30,
             "critical": 15
         },
         "format": "{icon}  {capacity}%",
         "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
-        "format-icons": ["", "", "", "", ""]
+        "format-plugged": "⏻ AC  {capacity}%",
+        "format-full": "⏻ AC",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format-discharging": "{timeTo}  •  {power:.2f}W",
+        "tooltip-format-charging": "{timeTo}  •  {power:.2f}W",
+        "tooltip-format-full": "On AC Power",
+        "tooltip-format-plugged": "On AC Power  •  {power:.2f}W"
     },
     "network": {
-        // EFFICIENT: Updates every 10 seconds
-        "interval": 10,
+        "interval": 2,
         "format-wifi": "  {essid}",
-        "format-ethernet": "Connected",
+        "format-ethernet": " Connected",
         "format-disconnected": "⚠ Disconnected",
-        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "Signal: {signalStrength}%\nIP: {ipaddr}\nGateway: {gwaddr}\n↑ {bandwidthUpBits}  ↓ {bandwidthDownBits}",
+        "tooltip-format-ethernet": "{ifname}\nIP: {ipaddr}\n↑ {bandwidthUpBits}  ↓ {bandwidthDownBits}",
+        "tooltip-format-disconnected": "No connection",
         "on-click": "footclient -e nmtui"
     },
     "tray": {
@@ -70,10 +75,10 @@
         "format": " {status}",
         "format-disabled": " Off",
         "format-connected": " {device_alias}",
-        "format-connected-battery": " {device_alias} - {device_battery_percentage}%",
-        "tooltip-format": "{device_battery_percentage}%",
-        "tooltip-format-connected": "{device_battery_percentage}%",
-        "tooltip-format-enumerate-connected": "{device_battery_percentage}%",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{status}",
+        "tooltip-format-connected": "{num_connections} connected\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "• {device_alias} — {device_battery_percentage}%",
         "on-click": "footclient -e bluetoothctl"
     },
     
@@ -87,6 +92,8 @@
     
     "custom/profile": {
         "format": " ",
-        "tooltip": false
+        "exec": "echo '{\"tooltip\": \"Brightness: '$(brightnessctl -m | cut -d, -f4)'\"}'",
+        "return-type": "json",
+        "interval": 5
     }
 }
