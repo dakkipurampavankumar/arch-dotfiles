@@ -3,7 +3,26 @@
 # $1 will be either "file" (for fd) or "content" (for ripgrep)
 
 if [ "$1" == "file" ]; then
-    target=$(fd --hidden --exclude .git --exclude .cache --type f --type d . "$HOME" "/mnt/PAVAN" | fzf --prompt="Find File/Dir > " --reverse)
+    # Build search paths: always search $HOME, only add /mnt/PAVAN if mounted
+    search_paths=("$HOME")
+    [[ -d "/mnt/PAVAN" ]] && search_paths+=("/mnt/PAVAN")
+
+    target=$(fd --hidden --follow --type f --type d \
+        --exclude .git \
+        --exclude node_modules \
+        --exclude build \
+        --exclude target \
+        --exclude .cargo \
+        --exclude .rustup \
+        --exclude .npm \
+        --exclude .cache \
+        --exclude .local \
+        --exclude .android \
+        --exclude .gnupg \
+        --exclude .gemini \
+        --exclude .mozilla \
+        --exclude lost+found \
+        . "${search_paths[@]}" | fzf --prompt="Find File/Dir > " --reverse)
     
     [ -z "$target" ] && exit 0
 
@@ -25,7 +44,7 @@ if [ "$1" == "file" ]; then
 elif [ "$1" == "content" ]; then
     # 1. Added -L (follow symlinks) and --hidden. 
     # 2. Added -g '!.git' so it doesn't waste time searching inside git history logs.
-    RG_PREFIX="rg --color=always --line-number --no-heading --smart-case -L --hidden -g '!.git'"
+    RG_PREFIX="rg --color=always --line-number --no-heading --smart-case -L --hidden -g '!.git' -g '!node_modules' -g '!build' -g '!target' -g '!.cargo' -g '!.rustup' -g '!.npm' -g '!.cache' -g '!.local' -g '!.android' -g '!.gnupg' -g '!.mozilla'"
     
     # Removed the manual single quotes around {q} because fzf applies them automatically
     target_line=$(
