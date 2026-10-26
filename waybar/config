@@ -26,7 +26,7 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "battery": {
-        "interval": 10,
+        "interval": 30,
         "states": {
             "warning": 30,
             "critical": 15
@@ -42,7 +42,7 @@
         "tooltip-format-plugged": "On AC Power  •  {power:.2f}W"
     },
     "network": {
-        "interval": 2,
+        "interval": 10,
         "format-wifi": "  {essid}",
         "format-ethernet": " Connected",
         "format-disconnected": "⚠ Disconnected",
@@ -94,6 +94,7 @@
         "format": " ",
         "exec": "echo '{\"tooltip\": \"Brightness: '$(brightnessctl -m | cut -d, -f4)'\"}'",
         "return-type": "json",
-        "interval": 5
+        "interval": "once",
+        "signal": 8
     }
 }

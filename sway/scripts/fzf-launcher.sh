@@ -22,7 +22,7 @@ if [ "$1" == "file" ]; then
         --exclude .gemini \
         --exclude .mozilla \
         --exclude lost+found \
-        . "${search_paths[@]}" | fzf --prompt="Find File/Dir > " --reverse)
+        . "${search_paths[@]}" | fzf --prompt="Find File/Dir > " --reverse --height=100%)
     
     [ -z "$target" ] && exit 0
 
@@ -49,7 +49,7 @@ elif [ "$1" == "content" ]; then
     # Removed the manual single quotes around {q} because fzf applies them automatically
     target_line=$(
         FZF_DEFAULT_COMMAND="$RG_PREFIX '' ~/.config" \
-        fzf --ansi --disabled --reverse --prompt="Search Content > " \
+        fzf --ansi --disabled --reverse --height=100% --prompt="Search Content > " \
             --bind "change:reload:$RG_PREFIX {q} ~/.config || true"
     )
     
