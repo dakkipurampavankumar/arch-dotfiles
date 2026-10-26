@@ -95,25 +95,31 @@ vim.keymap.set('n', '<F5>', function()
   local out_file = vim.fn.expand('%:p:r') -- e.g., /home/pavan/project/main
   local file_dir = vim.fn.expand('%:p:h') -- e.g., /home/pavan/project
 
+  -- Shell escape paths so spaces and special characters don't break bash commands
+  local s_file = vim.fn.shellescape(file)
+  local s_out_file = vim.fn.shellescape(out_file)
+  local s_file_dir = vim.fn.shellescape(file_dir)
+  local s_measure = vim.fn.shellescape(vim.fn.expand('~/.config/nvim/measure_run')) .. ' '
+
   -- 3. Base commands (cd into the file's directory first for safety)
-  local cd_cmd = 'cd ' .. file_dir .. ' && '
+  local cd_cmd = 'cd ' .. s_file_dir .. ' && '
   local commands = {
-    python = cd_cmd .. 'python3 ' .. file,
-    javascript = cd_cmd .. 'node ' .. file,
-    sh = cd_cmd .. 'bash ' .. file,
-    go = cd_cmd .. 'go run ' .. file,
-    c = cd_cmd .. 'gcc -g -Wall -Wextra ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
-    cpp = cd_cmd .. 'g++ -g -Wall -Wextra ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file,
-    java = cd_cmd .. 'javac ' .. file .. ' && java ' .. vim.fn.expand('%:t:r'),
+    python = cd_cmd .. s_measure .. 'python3 ' .. s_file,
+    javascript = cd_cmd .. s_measure .. 'node ' .. s_file,
+    sh = cd_cmd .. s_measure .. 'bash ' .. s_file,
+    go = cd_cmd .. s_measure .. 'go run ' .. s_file,
+    c = cd_cmd .. 'gcc -g -Wall -Wextra ' .. s_file .. ' -o ' .. s_out_file .. ' && ' .. s_measure .. s_out_file,
+    cpp = cd_cmd .. 'g++ -std=c++20 -g -Wall -Wextra ' .. s_file .. ' -o ' .. s_out_file .. ' && ' .. s_measure .. s_out_file,
+    java = cd_cmd .. 'javac ' .. s_file .. ' && ' .. s_measure .. 'java ' .. vim.fn.shellescape(vim.fn.expand('%:t:r')),
   }
 
   -- 4. Smart handling for Rust
   if filetype == 'rust' then
     local is_cargo = vim.fn.findfile('Cargo.toml', file_dir .. ';')
     if is_cargo ~= '' then
-      commands.rust = 'cargo run --manifest-path ' .. is_cargo
+      commands.rust = s_measure .. 'cargo run --manifest-path ' .. vim.fn.shellescape(is_cargo)
     else
-      commands.rust = cd_cmd .. 'rustc ' .. file .. ' -o ' .. out_file .. ' && ' .. out_file
+      commands.rust = cd_cmd .. 'rustc ' .. s_file .. ' -o ' .. s_out_file .. ' && ' .. s_measure .. s_out_file
     end
   end
 
@@ -121,15 +127,20 @@ vim.keymap.set('n', '<F5>', function()
   local cmd = commands[filetype]
 
   if cmd then
-    local Terminal = require('toggleterm.terminal').Terminal
-    local run_term = Terminal:new({
+    local term_module = require('toggleterm.terminal')
+    local existing = term_module.get(2)
+    if existing then
+      existing:shutdown()
+    end
+
+    local run_term = term_module.Terminal:new({
       cmd = cmd,
       count = 2,
       direction = 'horizontal',
       size = 15,
       close_on_exit = false, -- Keep output visible after program finishes
     })
-    run_term:toggle()
+    run_term:open()
   else
     print('No F5 run command configured for filetype: ' .. filetype)
   end

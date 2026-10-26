@@ -119,7 +119,7 @@ return {
     -- Add any additional override configuration in the following tables.
     local servers = {
       clangd = {
-        cmd = { 'clangd', '--function-arg-placeholders=0' },
+        cmd = { 'clangd', '--function-arg-placeholders=0', '--malloc-trim' },
       },
       jdtls = {}, -- Added Java Language Server
       ruff = {},
